@@ -275,7 +275,7 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
     border-radius: 0;
     padding: 10px 18px;
 }
-.apply-coupon {
+.woocommerce button.button.apply-coupon {
 	background-color: #009BDF;
     border-radius: 0;
     font-weight: 400;
