@@ -43,8 +43,8 @@ function purnava_enqueue_scripts() {
 	wp_register_script('jPages.min', get_template_directory_uri() . '/plugins/jPages/jPages.min.js', 'jquery');
 	wp_enqueue_script( 'jPages.min' );
 
-	wp_register_script('InputSpinner', get_template_directory_uri() . '/plugins/InputSpinner.js', 'jquery');
-	wp_enqueue_script( 'InputSpinner' );
+	// wp_register_script('InputSpinner', get_template_directory_uri() . '/plugins/InputSpinner.js', 'jquery');
+	// wp_enqueue_script( 'InputSpinner' );
 	
 
 

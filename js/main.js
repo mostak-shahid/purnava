@@ -3,10 +3,10 @@ jQuery(document).ready(function($){
 	// // console.log(pathname);
 	// if(pathname.match('log-in') && $('body').hasClass('logged-in-user'))
 	// 	window.location.href = window.location.origin + '/ePurnava/my-account/';
-    $("input[type='number']").InputSpinner({
-        decrementButton: "<i class='fa fa-minus'></i>", // button text
-        incrementButton: "<i class='fa fa-plus'></i>",
-    });
+    // $("input[type='number']").InputSpinner({
+    //     decrementButton: "<i class='fa fa-minus'></i>", // button text
+    //     incrementButton: "<i class='fa fa-plus'></i>",
+    // });
     function modalshow(){
         $('#exampleModal').modal('show')
     }
