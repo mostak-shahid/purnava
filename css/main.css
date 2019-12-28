@@ -267,6 +267,14 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 .wpb_content_element{margin-bottom: 0!important}
 .input-group-spinner {width: 164px;}
 .input-group-spinner .input{width: 84px;}
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button{
+	background-color: #009BDF;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+    border-radius: 0;
+    padding: 10px 18px;
+}
 .widget ul{list-style:none;padding-left:0}
 .widget ul li{}
 .widget ul li a{}
