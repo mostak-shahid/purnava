@@ -369,6 +369,7 @@ function mos_accordion_vc() {
 }
 
 function custom_auth_func( $atts = array(), $content = '' ) {
+	// $redirect_to = @$_GET['redirect_to'];
 	$html = '';
 	$atts = shortcode_atts( array(
 		'form' => 'login',
@@ -389,6 +390,8 @@ function custom_auth_func( $atts = array(), $content = '' ) {
 	$redirect = $atts['redirect'];
 	if (is_array(vc_build_link($redirect)))
 		$redirect = vc_build_link($atts['redirect'])["url"];
+	if (@$_GET['redirect_to'])
+		$redirect = $_GET['redirect_to'];
 	// $html .= $atts['form'];
 	$html .= '<div class="row justify-content-md-center">';
 		$html .= '<div class="col-md-5">';

@@ -76,34 +76,43 @@ do_action( 'woocommerce_before_cart' ); ?>
 								</td> -->
 
 								<td class="product-name" data-title="<?php esc_attr_e( 'Items', 'woocommerce' ); ?>">
-								
-								<?php
-								$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+								<div class="d-flex align-items-center">
+									<div class="img-wrap">
+									<?php
+									$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
 
-								if ( ! $product_permalink ) {
-									echo $thumbnail; // PHPCS: XSS ok.
-								} else {
-									printf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $thumbnail ); // PHPCS: XSS ok.
-								}
-								?>
-								<?php
-								if ( ! $product_permalink ) {
-									echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;' );
-								} else {
-									echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $_product->get_name() ), $cart_item, $cart_item_key ) );
-								}
+									if ( ! $product_permalink ) {
+										echo $thumbnail; // PHPCS: XSS ok.
+									} else {
+										printf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $thumbnail ); // PHPCS: XSS ok.
+									}
+									// if (has_post_thumbnail( $product_id )){
+									// 	echo '<img src="'.get_the_post_thumbnail_url( $product_id ).'">';
+									// }
+									?>
+									</div>
+									<div class="con-wrap">
+										<div class="p-name">
+									<?php
+									if ( ! $product_permalink ) {
+										echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;' );
+									} else {
+										echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $_product->get_name() ), $cart_item, $cart_item_key ) );
+									}
 
-								do_action( 'woocommerce_after_cart_item_name', $cart_item, $cart_item_key );
+									do_action( 'woocommerce_after_cart_item_name', $cart_item, $cart_item_key );
 
-								// Meta data.
-								echo wc_get_formatted_cart_item_data( $cart_item ); // PHPCS: XSS ok.
+									// Meta data.
+									echo wc_get_formatted_cart_item_data( $cart_item ); // PHPCS: XSS ok.
 
-								// Backorder notification.
-								if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) ) {
-									echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>', $product_id ) );
-								}
-								?><br/>
-								<a href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) ); ?>" class="text-danger">Delete</a> | <a href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) ); ?>&add-to-wishlist=<?php echo esc_attr( $product_id ) ?>" class="text-info">Add to Wishlist</a>
+									// Backorder notification.
+									if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) ) {
+										echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>', $product_id ) );
+									}
+									?></div>
+									<a href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) ); ?>" class="text-danger">Delete</a> | <a href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) ); ?>&add-to-wishlist=<?php echo esc_attr( $product_id ) ?>" class="text-info">Add to Wishlist</a>
+									</div>
+									</div>
 								</td>
 
 								<td class="product-price" data-title="<?php esc_attr_e( 'Price', 'woocommerce' ); ?>">
