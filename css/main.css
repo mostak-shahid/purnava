@@ -221,6 +221,8 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 	line-height: 30px;
 	color: #2F2F2F;
 }
+.woocommerce table.shop_table.woocommerce-checkout-review-order-table,.woocommerce table.shop_table.woocommerce-checkout-review-order-table tfoot th,.woocommerce table.shop_table.woocommerce-checkout-review-order-table td{border-style: none;font-size: 16px;line-height: 26px;font-weight: 400;padding: 0;color: rgba(47, 47, 47, .7);}
+.woocommerce table.shop_table.woocommerce-checkout-review-order-table thead{display: none;}
 .single-product-page section.related.products{clear: both;}
 #product-details{clear: both;background: #F9F9FA;}
 #product-details .details-title{font-weight: bold; font-size: 22px; line-height: 32px; color: #2F2F2F; padding: 18px 20px; border-bottom: 2px solid rgba(47,47,47,.15);margin-bottom: 0;}

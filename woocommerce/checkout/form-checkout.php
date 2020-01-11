@@ -73,7 +73,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 					</a> from here, or <a href="<?php echo home_url( '/log-in/' )?>?redirect_to=<?php echo home_url( '/checkout/' );?>">login</a> from here
 				<?php endif; ?>
 			</div>
-			<div class="col2-set d-none d-lg-block" id="customer_details">
+			<div class="col2-set d-none" id="customer_details">
 				<div class="billing_details">
 					<?php do_action( 'woocommerce_checkout_billing' ); ?>
 				</div>
