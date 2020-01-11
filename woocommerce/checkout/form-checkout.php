@@ -44,21 +44,21 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 					// var_dump($addresses);
 					$n = 1;
 					foreach ($addresses as $address) : ?>
-					<div class="col-lg-6">
-						<?php if ($address['type'] == 'default') ?>
-						<div class="address-unit d-flex <?php if ($address['type'] == 'default') echo 'active' ?>">
-							<div class="wrap p15">
-								<div class="custom-control custom-radio">
-									<input type="radio" id="customRadioInline-<?php echo $n ?>" name="customRadioInline1" class="custom-control-input" <?php if ($address['type'] == 'default') echo 'checked' ?>>
-									<label class="custom-control-label" for="customRadioInline-<?php echo $n ?>"><?php echo $address["first_name"] ?> <?php echo $address["last_name"] ?></label>
+						<div class="col-lg-6">
+							<?php if ($address['type'] == 'default') ?>
+							<div class="address-unit d-flex <?php if ($address['type'] == 'default') echo 'active' ?>">
+								<div class="wrap p15">
+									<div class="custom-control custom-radio">
+										<input type="radio" id="customRadioInline-<?php echo $n ?>" name="customRadioInline1" class="custom-control-input" <?php if ($address['type'] == 'default') echo 'checked' ?>>
+										<label class="custom-control-label" for="customRadioInline-<?php echo $n ?>"><?php echo $address["first_name"] ?> <?php echo $address["last_name"] ?></label>
+									</div>
+									<p class="living"><?php echo $address["address"] ?></p>
+									<p class="mobile">Mobile: <?php echo $address["phone"] ?></p>
 								</div>
-								<p class="living"><?php echo $address["address"] ?></p>
-								<p class="mobile">Mobile: <?php echo $address["phone"] ?></p>
 							</div>
 						</div>
-					</div>
-					<?php $n++; ?>
-				<?php endforeach; ?>
+						<?php $n++; ?>
+					<?php endforeach; ?>
 						<div class="col-lg-6">
 							<div class="address-unit add-new d-flex justify-content-center align-items-center">
 								<div class="wrap text-center">
