@@ -46,7 +46,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 					foreach ($addresses as $address) : ?>
 						<div class="col-lg-6">
 							<?php if ($address['type'] == 'default') ?>
-							<div class="address-unit d-flex <?php if ($address['type'] == 'default') echo 'active' ?>">
+							<div class="address-unit old-unit d-flex <?php if ($address['type'] == 'default') echo 'active' ?>">
 								<div class="wrap p15">
 									<div class="custom-control custom-radio">
 										<input type="radio" id="customRadioInline-<?php echo $n ?>" name="customRadioInline1" class="custom-control-input" <?php if ($address['type'] == 'default') echo 'checked' ?>>
@@ -69,10 +69,11 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 						</div>
 					</div>
 				<?php else : ?>
-					If you haven't registered yet please create an account from here, or login from here
+					If you haven't registered yet please <a href="<?php echo home_url( '/register/' )?>?redirect_to=<?php echo home_url( '/checkout/' );?>">create an account
+					</a> from here, or <a href="<?php echo home_url( '/log-in/' )?>?redirect_to=<?php echo home_url( '/checkout/' );?>">login</a> from here
 				<?php endif; ?>
 			</div>
-			<div class="col2-set d-none" id="customer_details">
+			<div class="col2-set d-none d-lg-block" id="customer_details">
 				<div class="billing_details">
 					<?php do_action( 'woocommerce_checkout_billing' ); ?>
 				</div>

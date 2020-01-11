@@ -251,6 +251,11 @@ jQuery(document).ready(function($){
     $("#account_image").change(function(){
         readURL(this, '#account_image_preview');
     });
+    $('.address-unit.old-unit').click(function(){
+        $(this).parent().siblings().find('.address-unit').removeClass('active');
+        $(this).addClass('active');
+        $(this).find('.custom-control-input').attr('checked', true);
+    });
 
     function readURL(input,output) {
         if (input.files && input.files[0]) {
