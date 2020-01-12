@@ -255,8 +255,23 @@ jQuery(document).ready(function($){
         $(this).parent().siblings().find('.address-unit').removeClass('active');
         $(this).addClass('active');
         $(this).find('.custom-control-input').attr('checked', true);
-    });
 
+        var fname = $(this).data('fname');
+        var lname = $(this).data('lname');
+        var phone = $(this).data('phone');
+        var address = $(this).data('address');
+        var city = $(this).data('city');
+        var district = $(this).data('district');
+        var post = $(this).data('post');
+
+        $('#billing_first_name,#shipping_first_name').val(fname);
+        $('#billing_last_name,#shipping_last_name').val(lname);
+        $('#billing_address_1').val(address);
+        $('#billing_city').val(city);
+        $('#billing_state').val(district);
+        $('#billing_phone').val(phone);
+        $('#billing_postcode').val(post);
+    });
     function readURL(input,output) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

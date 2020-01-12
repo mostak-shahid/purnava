@@ -74,6 +74,15 @@ if ($setdefault >-1 ){
 	}
 	$addresss[$setdefault]['type'] = 'default';
 	update_user_meta( $customer_id, 'mos_user_address', $addresss );
+
+	update_user_meta( $customer_id, 'billing_first_name', $addresss[$setdefault]["first_name"] );
+	update_user_meta( $customer_id, 'billing_last_name', $addresss[$setdefault]["last_name"] );
+	update_user_meta( $customer_id, 'billing_address_1', $addresss[$setdefault]["address"] );
+	update_user_meta( $customer_id, 'billing_city', $districts[$addresss[$setdefault]["district"]] );
+	update_user_meta( $customer_id, 'billing_state', $addresss[$setdefault]["district"] );
+	update_user_meta( $customer_id, 'billing_phone', $addresss[$setdefault]["phone"] );
+	update_user_meta( $customer_id, 'billing_postcode', $addresss[$setdefault]["post"] );
+
 }
 if ($delete >-1 ){
 	$addresss = get_user_meta( $customer_id, 'mos_user_address', true ); 
@@ -93,27 +102,27 @@ $addresss = get_user_meta( $customer_id, 'mos_user_address', true );
 					<?php wp_nonce_field( 'address_nonce_form', 'address_nonce_form_field' ); ?>
 					<div class="form-row">
 						<div class="form-group col">
-							<input type="text" class="form-control rounded-0 mos-border-bottom pl0 pr0" name="first_name" id="first_name" placeholder="First Name">
+							<input type="text" class="form-control rounded-0 mos-border-bottom pl0 pr0" name="first_name" id="first_name" placeholder="First Name" required>
 						</div>
 						<div class="form-group col">
-							<input type="text" class="form-control rounded-0 mos-border-bottom pl0 pr0" name="last_name" id="last_name" placeholder="Last Name">
+							<input type="text" class="form-control rounded-0 mos-border-bottom pl0 pr0" name="last_name" id="last_name" placeholder="Last Name" required>
 						</div>
 					</div>
 					<div class="form-group">
-						<input type="tel" class="form-control rounded-0 mos-border-bottom pl0 pr0" name="phone" id="phone" placeholder="Mobile Number">
+						<input type="tel" class="form-control rounded-0 mos-border-bottom pl0 pr0" name="phone" id="phone" placeholder="Mobile Number" required>
 					</div>
 					<div class="form-group">
 						<input type="tel" class="form-control rounded-0 mos-border-bottom pl0 pr0" name="fax" id="fax" placeholder="Fax (Optional)">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control rounded-0 mos-border-bottom pl0 pr0" name="address" id="address" placeholder="Address">
+						<input type="text" class="form-control rounded-0 mos-border-bottom pl0 pr0" name="address" id="address" placeholder="Address" required>
 					</div>
 					<div class="form-row">
 						<div class="form-group col">
-							<select class="form-control rounded-0 mos-border-bottom pl0 pr0" name="district" id="district">
+							<select class="form-control rounded-0 mos-border-bottom pl0 pr0" name="district" id="district" required>
 								<option value="">District</option>
-							<?php foreach ($districts as $district) : ?>
-								<option value="<?php echo $district ?>"><?php echo $district ?></option>
+							<?php foreach ($districts as $code => $district) : ?>
+								<option value="<?php echo $code ?>"><?php echo $district ?></option>
 							<?php endforeach; ?>
 							</select>
 						</div>
@@ -123,6 +132,14 @@ $addresss = get_user_meta( $customer_id, 'mos_user_address', true );
 							<input type="hidden" name="type" id="type" value="other">
 						</div>
 					</div>
+					<!-- <div class="form-row">
+						<div class="form-group">
+							<div class="custom-control custom-checkbox">
+								<input name="type" type="checkbox" class="custom-control-input" id="type" value="default">
+								<label class="custom-control-label" for="type">Save it as a default shipping address</label>
+							</div>
+						</div>
+					</div> -->
 					<div class="form-row">
 						<div class="col"><button type="button" class="btn btn-block btn-light rounded-0 border" data-dismiss="modal">Cancel</button></div>
 						<div class="col"><button type="submit" class="btn btn-block btn-secondary rounded-0" name="submit" id="submit" value="create">Create</button></div>

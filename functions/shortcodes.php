@@ -32,6 +32,7 @@ function shortcodes_page(){
 			<li>[company-icon width='' height='' name=''] <span class="sdetagils">Company Icon</span></li>
 			<li>[feature-image height='' width=''] <span class="sdetagils">displays feature image of post</span></li>		
 			<li>[product-search] <span class="sdetagils">displays product search form</span></li>
+			<li>[address-form] <span class="sdetagils">displays adddress form search form</span></li>
 		</ol>
 	</div>
 	<?php
@@ -430,3 +431,4 @@ function wishlist_products_func( $atts = array(), $content = '' ) {
 	return $html;
 }
 add_shortcode( 'wishlist-products', 'wishlist_products_func' );
+
