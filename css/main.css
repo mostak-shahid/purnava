@@ -274,8 +274,8 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
     bottom: 40px;
     padding-left: 15px;
 }
-.woocommerce-page div.product .back-to-shop + div.images{width: 36%;}
-.woocommerce-page div.product div.images + div.summary{width: 60%;}
+.woocommerce-page div.product .back-to-shop + div.images{width: 38%;}
+.woocommerce-page div.product div.images + div.summary{width: 58%;}
 .share-title{margin: 20px 0;}
 .single-event-post .desc{width: 750px;margin-left: auto;margin-right: auto;}
 .single-event-post .desc p,.single-event-post .desc .enent-info{padding-left: 5.2vw;padding-right: 5.2vw;}
