@@ -436,6 +436,7 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 	#section-widgets .widgets-two .widget-title:after ,#section-widgets .widgets-three .widget-title:after{font-family: 'FontAwesome'; content: "\f107"; line-height: 35px;float: right}
 	#section-widgets .widgets-two .widget-title + div,#section-widgets .widgets-three .widget-title + div{display: none;}
 	#cactegories-section{border-left-style: none!important;border-right-style: none!important;padding-left: 30px;padding-right: 30px;}
+	#section-pcategory .unit .cat-name, .mos-product-categories .mos-category-unit .cat-name{font-size: 16px;line-height: 20px;font-weight: 600}
 }
 
 /* Small devices (landscape phones,less than 768px) */
