@@ -451,6 +451,7 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 	#products-section .btn-outline-blue{margin-top: 15px;}
 	.mos-product-slider .slick-next,.mos-product-slider .slick-prev{display: none;}
 	.woocommerce ul.products[class*=columns-] li.product, .shop-archive-page ul.products[class*=columns-] li.product {width: 100%; margin: 0; }
+	.vc_custom_heading{font-weight: bold; font-size: 16px!important; line-height: 24px!important; }
 }
 
 /* Extra small devices (portrait phones,less than 576px) */
