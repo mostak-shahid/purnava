@@ -69,7 +69,7 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 #main-header .top-header{padding-top: 10px;padding-bottom: 10px;}
 #main-header .top-header .logo-wrapper {display: inline-block;}
 #main-header .top-header .woocommerce-product-search .form-control{height: 50px;border-radius: 0; border-style: none;}
-#main-header .top-header .woocommerce-product-search .btn{padding-top: 13px;padding-bottom: 13px;border-radius: 0;background-color: #ffffff; border-style: none;}
+#main-header .top-header .woocommerce-product-search .btn{padding-top: 13px;padding-bottom: 13px;border-radius: 0;background-color: #ffffff; border-style: none;color: #009BDF;}
 #main-header .nav-part {background-color: #0C7AC9}
 #main-header .nav-part .header-menu{padding: 0;margin: 0;list-style: none;}
 #main-header .nav-part .header-menu li{display: inline-block;padding: 0 20px;}
