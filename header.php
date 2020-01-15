@@ -46,11 +46,11 @@ if ( $current_user->ID ) {
 			<div class="top-header">
 				<div class="container">
 					<div class="row align-items-center">
-						<div class="col-auto col-lg-3 text-left logo-wrapper">
+						<div class="col-6 col-lg-3 text-left logo-wrapper">
 							<a id="menu-toggle" class="d-lg-none" href="javascript:void(0)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M22 7V5H2V7H22ZM22 11V13H2V11H22ZM22 17V19H2V17H22Z" fill="white"/></svg></a>
 							<?php echo do_shortcode( '[site-identity]' ); ?>								
 						</div>
-						<div class="col-auto col-lg-3 order-lg-last text-right icon-wrapper">
+						<div class="col-6 col-lg-3 order-lg-last text-right icon-wrapper">
 							<ul class="list-inline mb-0">
 								<li class="list-inline-item"><a href="<?php echo home_url( '/wishlist/' ); ?>"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 25.25L14.5 24.875C14 24.625 3.75 17.75 3.75 11.625C3.75 7.25 6.875 5 9.875 5C11.875 5 13.75 5.875 15 7.5C16.25 5.875 18.125 5 20.125 5C23.125 5 26.25 7.25 26.25 11.625C26.25 17.75 16 24.5 15.5 24.875L15 25.25ZM9.875 6.875C7.875 6.875 5.625 8.375 5.625 11.625C5.625 15.625 12 20.75 15 22.875C18.25 20.75 24.375 15.625 24.375 11.625C24.375 8.375 22.125 6.875 20.125 6.875C18.5 6.875 16.875 7.75 16 9.375C16 9.5 15.875 9.5 15.875 9.5L15 11.25L14.125 9.625C14.125 9.5 14 9.5 14 9.5C13.125 7.875 11.625 6.875 9.875 6.875Z" fill="white"/></svg></a></li>
 								<li class="list-inline-item"><a href="<?php echo home_url( '/cart/' ); ?>"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.875 8.625H20.125V8C20.125 5.125 17.75 2.875 15 2.875C12.25 2.875 9.875 5.125 9.875 8V8.625H6.125L4 27.125H26.125L23.875 8.625ZM9.875 10.875C9.5 11.125 9.375 11.5 9.375 11.875C9.375 12.625 10 13.25 10.75 13.25C11.5 13.25 12.125 12.625 12.125 11.875C12.125 11.5 12 11.125 11.625 10.875V10.375H18.5V10.875C18.25 11.125 18 11.5 18 11.875C18 12.625 18.625 13.25 19.375 13.25C20.125 13.25 20.75 12.625 20.75 11.875C20.75 11.5 20.625 11.125 20.25 10.875V10.375H22.5L24.25 25.5H5.875L7.625 10.375H9.875V10.875V10.875ZM11.5 8.625V8C11.5 6.125 13 4.5 15 4.5C16.875 4.5 18.5 6 18.5 8V8.625H11.5Z" fill="white"/></svg></a></li>
