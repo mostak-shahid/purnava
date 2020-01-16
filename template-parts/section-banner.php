@@ -15,8 +15,9 @@ do_action( 'action_before_banner', $page_details );
 		<div <?php if ( $select == 'banner' ) echo 'class="static-banner"'; else echo 'id="section-banner-owl" class="owl-carousel owl-theme"';   ?>>
 			<?php foreach ($slides as $slide) : ?>
 				<div class="wrapper">
-					<?php echo wp_get_attachment_image( $slide["attachment_id"], 'full', false, array( 'class' => 'img-fluid img-banner', 'alt' => $alt_tag['inner'] . strip_tags(do_shortcode( $slide["title"] )) )) ?>
-					<div class="d-block d-sm-none">HY</div>
+					
+					<div class="d-block d-sm-none"><img class="img-fluid img-banner" src="<?php echo aq_resize(wp_get_attachment_url($slide["attachment_id"]),360,150,true) ?>" alt="<?php echo strip_tags(do_shortcode( $slide["title"] )) ?>"></div>
+					<div class="d-none d-sm-block"><?php echo wp_get_attachment_image( $slide["attachment_id"], 'full', false, array( 'class' => 'img-fluid img-banner', 'alt' => $alt_tag['inner'] . strip_tags(do_shortcode( $slide["title"] )) )) ?></div>
 					<?php do_action( 'action_before_banner_content', $page_details ); ?>
 					<div class="banner-content">
 						<div class="container">
