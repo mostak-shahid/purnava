@@ -16,6 +16,7 @@ do_action( 'action_before_banner', $page_details );
 			<?php foreach ($slides as $slide) : ?>
 				<div class="wrapper">
 					<?php echo wp_get_attachment_image( $slide["attachment_id"], 'full', false, array( 'class' => 'img-fluid img-banner', 'alt' => $alt_tag['inner'] . strip_tags(do_shortcode( $slide["title"] )) )) ?>
+					<div class="d-block d-md-none">HY</div>
 					<?php do_action( 'action_before_banner_content', $page_details ); ?>
 					<div class="banner-content">
 						<div class="container">
