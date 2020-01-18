@@ -375,6 +375,11 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
     color: #ffffff;
     height: 37px;
 }
+#newletter-section .form-control{
+	color: rgba(255,255,255,.4);
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 14px;	
+}
 #newletter-section ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 	color: rgba(255,255,255,.4);
 	font-family: 'Nunito Sans', sans-serif;
