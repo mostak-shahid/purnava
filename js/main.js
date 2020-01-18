@@ -155,6 +155,8 @@ jQuery(document).ready(function($){
         autoplay: true,
         autoplaySpeed: 2000,
         focusOnSelect: true,  
+                    center:true,
+                    centerPadding: '40px 0px 0px',
         responsive: [
             {
                 breakpoint: 768,
@@ -168,8 +170,6 @@ jQuery(document).ready(function($){
                 settings: {
                     slidesToShow: 1, 
                     dots: true,
-                    center:true,
-                    centerPadding: '40px 0px 0px',
                 }
             }
         ]    
