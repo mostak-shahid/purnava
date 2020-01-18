@@ -141,7 +141,7 @@ jQuery(document).ready(function($){
             {
                 breakpoint: 576,
                 settings: {
-                    slidesToShow: 1, 
+                    slidesToShow: 2, 
                     dots: true,                    
                 }
             }

@@ -29,6 +29,7 @@ function purnava_enqueue_scripts() {
 	wp_register_style( 'slick-theme', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css' );
 	wp_enqueue_style( 'slick' );
 	wp_enqueue_style( 'slick-theme' );
+	// wp_register_script('slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js', 'jquery');
 	wp_register_script('slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js', 'jquery');
 	wp_enqueue_script( 'slick' );		
 	
