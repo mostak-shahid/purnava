@@ -874,7 +874,7 @@ function mos_image_carousel_func( $atts = array(), $content = '' ) {
 	}
 	$dots = ($atts['dots'])? 'true' : 'false';
 	$arrows = ($atts['arrows'])? 'true' : 'false';
-	$html .= '<script>jQuery(document).ready(function($){$("#'.$id.'").slick({slidesToShow:'.$atts['show'].',slidesToScroll:'.$atts['scroll'].',autoplay:true,autoplaySpeed:'.$atts['speed'].',focusOnSelect:true,dots:'.$dots.',arrows:'.$arrows.',responsive:[{breakpoint:1024,settings:{slidesToShow:'.$atts['breakpoint-1024'].',}},{breakpoint:600,settings:{slidesToShow:'.$atts['breakpoint-600'].',centerMode:true,}},{breakpoint:480,settings:{slidesToShow:'.$atts['breakpoint-480'].',centerMode:true}}]})})</script>'; 
+	$html .= '<script>jQuery(document).ready(function($){$("#'.$id.'").slick({slidesToShow:'.$atts['show'].',slidesToScroll:'.$atts['scroll'].',autoplay:true,autoplaySpeed:'.$atts['speed'].',focusOnSelect:true,dots:'.$dots.',arrows:'.$arrows.',responsive:[{breakpoint:1024,settings:{slidesToShow:'.$atts['breakpoint-1024'].',}},{breakpoint:600,settings:{slidesToShow:'.$atts['breakpoint-600'].',centerMode:true,centerPadding: "60px 0px 0px",}},{breakpoint:480,settings:{slidesToShow:'.$atts['breakpoint-480'].',centerMode:true,centerPadding: "60px 0px 0px",}}]})})</script>'; 
 	
 	return $html;
 }
