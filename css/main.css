@@ -375,6 +375,26 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
     color: #ffffff;
     height: 37px;
 }
+#newletter-section ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	color: rgba(255,255,255,.4);
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 14px;
+}
+#newletter-section ::-moz-placeholder { /* Firefox 19+ */
+	color: rgba(255,255,255,.4);
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 14px;
+}
+#newletter-section :-ms-input-placeholder { /* IE 10+ */
+	color: rgba(255,255,255,.4);
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 14px;
+}
+#newletter-section :-moz-placeholder { /* Firefox 18- */
+	color: rgba(255,255,255,.4);
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 14px;
+}
 .widget ul{list-style:none;padding-left:0}
 .widget ul li{}
 .widget ul li a{}
