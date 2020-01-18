@@ -114,7 +114,7 @@ jQuery(document).ready(function($){
         items:4,
         center:true,
     });
-    $('.mos-embeded-slider').slick({
+    /*$('.mos-embeded-slider').slick({
         slidesToShow: 6,
         slidesToScroll: 1, 
         dots: false,
@@ -142,12 +142,66 @@ jQuery(document).ready(function($){
                 breakpoint: 576,
                 settings: {
                     slidesToShow: 2, 
+                    arrows: false,
                     dots: true,                    
                 }
             }
         ]    
+    });*/
+    $('.mos-embeded-slider').slick({
+        slidesToShow: 6,
+        slidesToScroll: 1, 
+        dots: false,
+        arrows: true,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1, 
+                    arrows: false,
+                    dots: true,  
+                    centerMode: true,
+                    centerPadding: '140px 0px 0px',
+                }
+            }
+        ] 
     });
     $('.mos-event-slider').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1, 
+        dots: true,
+        arrows: false,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1, 
+                    dots: true,  
+                    centerMode: true,
+                    centerPadding: '40px 0px 0px',
+                }
+            }
+        ] 
+    });
+    /*$('.mos-event-slider').slick({
         slidesToShow: 3,
         slidesToScroll: 1, 
         dots: true,
@@ -155,8 +209,7 @@ jQuery(document).ready(function($){
         autoplay: true,
         autoplaySpeed: 2000,
         focusOnSelect: true,  
-                    center:true,
-                    centerPadding: '40px 0px 0px',
+        centerPadding: '40px 0px 0px',
         responsive: [
             {
                 breakpoint: 768,
@@ -169,11 +222,12 @@ jQuery(document).ready(function($){
                 breakpoint: 576,
                 settings: {
                     slidesToShow: 1, 
-                    dots: true,
+                    dots: true,                    
+                    center:true,
                 }
             }
         ]    
-    });
+    });*/
     $('.related-products').slick({
         slidesToShow: 4,
         slidesToScroll: 1, 
