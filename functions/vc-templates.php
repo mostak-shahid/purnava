@@ -787,7 +787,7 @@ function mos_product_carousel_vc() {
 				"type" => "dropdown_multi",
 				"holder" => "div",
 				"class" => "",
-				"heading" => __( "Images", "my-text-domain" ),
+				"heading" => __( "Products", "my-text-domain" ),
 				"param_name" => "products",
 				// "admin_label" => false,
 				"value" => $option,

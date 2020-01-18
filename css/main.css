@@ -403,7 +403,9 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 #footer .footer-text > p:last-child{margin-bottom: 0;}
 
 /*Small devices (landscape phones,576px and up)*/
-@media (min-width:576px){}
+@media (min-width:576px){
+	#products-section .slick-dots{display: none;}
+}
 
 /* Medium devices (tablets,768px and up) */
 @media (min-width:768px){
@@ -460,4 +462,5 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 	.mos-product-categories{margin-left: -5px;margin-right: -5px;}
 	.mos-product-categories .col-4{padding-left: 5px;padding-right: 5px;}
 	#products-section .vc_custom_heading{margin-top: 10px;margin-bottom: 10px;}
+	#products-section .slick-arrow{display: none;}
 }
