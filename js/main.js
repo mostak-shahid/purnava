@@ -157,17 +157,19 @@ jQuery(document).ready(function($){
         focusOnSelect: true,  
         responsive: [
             {
-                breakpoint: 600,
+                breakpoint: 768,
                 settings: {
                     slidesToShow: 2,
                     centerMode: true,
                 }
             },
             {
-                breakpoint: 480,
+                breakpoint: 576,
                 settings: {
                     slidesToShow: 1, 
                     dots: true,
+                    center:true,
+                    centerPadding: '40px 0px 0px',
                 }
             }
         ]    
