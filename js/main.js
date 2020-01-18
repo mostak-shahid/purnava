@@ -130,17 +130,18 @@ jQuery(document).ready(function($){
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 768,
                 settings: {
                     slidesToShow: 2,
                     centerMode: true,
                 }
             },
             {
-                breakpoint: 480,
+                breakpoint: 576,
                 settings: {
                     slidesToShow: 1, 
                     dots: true,
+                    centerPadding: '100px 0px 0px',
                 }
             }
         ]    
