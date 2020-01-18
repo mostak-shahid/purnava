@@ -113,7 +113,6 @@ jQuery(document).ready(function($){
         dots: false,        
         items:4,
         center:true,
-        centerPadding: '100px 0px 0px',
     });
     $('.mos-embeded-slider').slick({
         slidesToShow: 6,
@@ -122,7 +121,9 @@ jQuery(document).ready(function($){
         arrows: true, 
         autoplay: true,
         autoplaySpeed: 2000,
-        focusOnSelect: true,  
+        focusOnSelect: true, 
+        center:true,
+        centerPadding: '100px 0px 0px', 
         responsive: [
             {
                 breakpoint: 1024,
