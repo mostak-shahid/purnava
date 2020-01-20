@@ -500,5 +500,5 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 	#hero-section{padding-top: 80px !important;padding-bottom: 80px !important;}
 	.woocommerce-page div.product .back-to-shop + div.images,.woocommerce-page div.product div.images + div.summary{width: 100%;}
 	.woocommerce div.product div.summary{margin-top: 0;padding: 40px 20px;}
-	.woocommerce div.product div.summary .product_title{font-size: 22px;line-height: 32px;}
+	.woocommerce div.product div.summary .product_title{font-size: 22px;line-height: 32px;margin-bottom: 5px;}
 }
