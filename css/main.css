@@ -502,4 +502,5 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 	.woocommerce div.product div.summary{margin-top: 0;padding: 40px 20px;}
 	.woocommerce div.product div.summary .product_title{font-size: 22px;line-height: 32px;margin-bottom: 5px;}
 	.woocommerce table.shop_table_responsive.woocommerce-cart-form__contents tr td:before, .woocommerce-page table.shop_table_responsive.woocommerce-cart-form__contents tr td:before{display: none;}
+	.woocommerce div.product div.summary .cart-wishlist a{width: 100%;text-align: center;display: block;}
 }
