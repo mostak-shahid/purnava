@@ -483,6 +483,7 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 	#products-section .vc_custom_heading{font-weight: bold; font-size: 16px!important; line-height: 24px!important; margin-left: 0!important;float: left;}
 	#products-section .btn-outline-blue{margin: 0!important;}
 	.woocommerce-page div.product .back-to-shop + div.images,.woocommerce-page div.product div.images + div.summary{width: 100%;}
+	.woocommerce div.product div.summary{margin-top: 0;padding: 40px 20px;}
 }
 
 /* Extra small devices (portrait phones,less than 576px) */
