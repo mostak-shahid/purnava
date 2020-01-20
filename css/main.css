@@ -504,4 +504,6 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 	.woocommerce table.shop_table_responsive.woocommerce-cart-form__contents tr td:before, .woocommerce-page table.shop_table_responsive.woocommerce-cart-form__contents tr td:before{display: none;}
 	.woocommerce div.product div.summary .cart-wishlist{margin-bottom: 0;}
 	.woocommerce div.product div.summary .cart-wishlist a{width: 100%;text-align: center;display: block;margin-bottom: 20px;}
+	#product-details .details-desc{padding: 5px;}
+	#product-details .details-desc h5{font-size: 16px;line-height: 24px;}
 }
