@@ -501,4 +501,5 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 	.woocommerce-page div.product .back-to-shop + div.images,.woocommerce-page div.product div.images + div.summary{width: 100%;}
 	.woocommerce div.product div.summary{margin-top: 0;padding: 40px 20px;}
 	.woocommerce div.product div.summary .product_title{font-size: 22px;line-height: 32px;margin-bottom: 5px;}
+	.woocommerce table.shop_table_responsive.cart_item tr td::before, .woocommerce-page table.shop_table_responsive.cart_item tr td::before{display: none;}
 }
