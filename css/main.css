@@ -482,8 +482,6 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 	.woocommerce ul.products[class*=columns-] li.product, .shop-archive-page ul.products[class*=columns-] li.product {width: 100%; margin: 0; }
 	#products-section .vc_custom_heading{font-weight: bold; font-size: 16px!important; line-height: 24px!important; margin-left: 0!important;float: left;}
 	#products-section .btn-outline-blue{margin: 0!important;}
-	.woocommerce-page div.product .back-to-shop + div.images,.woocommerce-page div.product div.images + div.summary{width: 100%;}
-	.woocommerce div.product div.summary{margin-top: 0;padding: 40px 20px;}
 }
 
 /* Extra small devices (portrait phones,less than 576px) */
@@ -500,4 +498,7 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 	#newletter-section{padding-top: 115px!important;padding-bottom: 115px!important;}
 	#blog-section .vc_custom_heading{font-size: 24px!important;line-height: 30px!important;margin-bottom: 20px!important;padding: 9px 0;}
 	#hero-section{padding-top: 80px !important;padding-bottom: 80px !important;}
+	.woocommerce-page div.product .back-to-shop + div.images,.woocommerce-page div.product div.images + div.summary{width: 100%;}
+	.woocommerce div.product div.summary{margin-top: 0;padding: 40px 20px;}
+	.woocommerce div.product div.summary .product_title{font-size: 22px;line-height: 32px;}
 }
