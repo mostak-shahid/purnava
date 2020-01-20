@@ -506,4 +506,5 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 	.woocommerce div.product div.summary .cart-wishlist a{width: 100%;text-align: center;display: block;margin-bottom: 20px;}
 	#product-details .details-desc{padding: 5px;}
 	#product-details .details-desc h5{font-size: 16px;line-height: 24px;}
+	#product-details .details-desc .info-title{font-size: 12px;line-height: 22px;}
 }
