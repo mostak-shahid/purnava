@@ -61,7 +61,9 @@ if ( $current_user->ID ) {
 					</div>
 				</div>			
 			</div>
-			<div class="nav-part">
+	</div>
+	</header>
+			<div class="nav-part sticky-top">
 				<div class="container text-center">
 					<?php
 					wp_nav_menu([
@@ -79,8 +81,6 @@ if ( $current_user->ID ) {
 					?>							
 				</div>				
 			</div>
-	</div>
-	</header>
 	<?php if (!is_front_page() AND !is_product() AND get_post_type() != 'event') : ?>
 		<?php do_action( 'action_avobe_page_titile', $page_details ); ?>
 		<?php 

@@ -20,9 +20,9 @@ jQuery(document).ready(function($){
         //     $('.mos-change-password-form').after('<div class="post-loader"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>');
         //     $(this).prop('disabled', true);
         // },
-        success: function(response) {
-            console.log(response);            
-        },
+        // success: function(response) {
+        //     console.log(response);            
+        // },
     });    
     $('#change_account_password').click(function(){
         var password_current = $('#password_current').val();
