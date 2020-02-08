@@ -37,11 +37,11 @@ jQuery(document).ready(function($){
     $(window).scroll(function(){
         if ($(this).scrollTop() > 100) {
             //$('.scrollup').fadeIn();
-            $('#main-header').addClass('tiny');
+            // $('#main-header').addClass('tiny');
             $('.scrollup').fadeIn();
         } else {
             //$('.scrollup').fadeOut();
-            $('#main-header').removeClass('tiny');
+            // $('#main-header').removeClass('tiny');
             $('.scrollup').fadeOut();
         }
     });
