@@ -162,7 +162,9 @@ function add_to_wishlist_func(){
             if (!in_array($product_id, $prev))
             $cookie_value = $_COOKIE[$cookie_name] . ',' . $product_id;
         }
-        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");        
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
+        wp_redirect( home_url('/wishlist/') );
+        exit;       
     }
 }
 add_action( 'init', 'remove_from_wishlist_func' );
