@@ -154,6 +154,7 @@ function add_to_wishlist_func(){
     if (@$_GET['add-to-wishlist']){
         $product_id = $_GET['add-to-wishlist'];        
         $cookie_name = 'wishlist_products';
+        $cookie_value = $_COOKIE[$cookie_name];
         if(!isset($_COOKIE[$cookie_name])) {
             $cookie_value = $product_id;
         } else {
@@ -168,7 +169,8 @@ add_action( 'init', 'remove_from_wishlist_func' );
 function remove_from_wishlist_func(){
     if (@$_GET['remove-from-wishlist']){
         $product_id = $_GET['remove-from-wishlist'];    
-        $cookie_name = 'wishlist_products'; 
+        $cookie_name = 'wishlist_products';
+        $cookie_value = $_COOKIE[$cookie_name]; 
         if(isset($_COOKIE[$cookie_name])) {
             $prev = explode(',', $_COOKIE[$cookie_name]);
             if (in_array($product_id, $prev)){
