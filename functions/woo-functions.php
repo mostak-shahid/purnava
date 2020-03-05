@@ -57,13 +57,13 @@ function back_to_shop_func(){
 add_action( 'woocommerce_single_product_summary', 'custom_hot_wishlist_func', 1 );
 function custom_hot_wishlist_func(){
     global $product;
-    echo '<div class="hot-wishlist row"><div class="col"><div class="badge-con"><span class="badge badge-pill badge-warning badge-product">HOT</span></div></div><div class="col text-right"><a rel="nofollow" href="?add-to-wishlist='.$product->get_id().'" data-quantity="1" data-product_id="'.$product->get_id().'" data-product_sku="'.$product->get_sku().'" class="wishlist-button"><i class="fa fa-heart-o"></i></a></div></div>';
+    echo '<div class="hot-wishlist row"><div class="col"><div class="badge-con"><span class="badge badge-pill badge-warning badge-product">HOT</span></div></div><div class="col text-right"><a rel="nofollow" href="?add_to_wishlist='.$product->get_id().'" data-quantity="1" data-product_id="'.$product->get_id().'" data-product_sku="'.$product->get_sku().'" class="wishlist-button"><i class="fa fa-heart-o"></i></a></div></div>';
 }
 
 add_action( 'woocommerce_single_product_summary', 'custom_add_to_cart_func', 30 );
 function custom_add_to_cart_func(){
     global $product;
-    echo '<div class="cart-wishlist"><a rel="nofollow" href="?add-to-cart='.$product->get_id().'" data-quantity="1" data-product_id="'.$product->get_id().'" data-product_sku="'.$product->get_sku().'" class="btn btn-primary text-white rounded-0 mr-1 cart-button">Add to Cart</a><a rel="nofollow" href="?add-to-wishlist='.$product->get_id().'" data-quantity="1" data-product_id="'.$product->get_id().'" data-product_sku="'.$product->get_sku().'" class="btn btn-outline-primary rounded-0 wishlist-button">Add to Wishlist</a></div>';
+    echo '<div class="cart-wishlist"><a rel="nofollow" href="?add-to-cart='.$product->get_id().'" data-quantity="1" data-product_id="'.$product->get_id().'" data-product_sku="'.$product->get_sku().'" class="btn btn-primary text-white rounded-0 mr-1 cart-button">Add to Cart</a><a rel="nofollow" href="?add_to_wishlist='.$product->get_id().'" data-quantity="1" data-product_id="'.$product->get_id().'" data-product_sku="'.$product->get_sku().'" class="btn btn-outline-primary rounded-0 wishlist-button">Add to Wishlist</a></div>';
     echo '<div class="contact-info">Need more information about this Product? <a href="#">Contact With Us</a></div>';
 }
 
@@ -91,7 +91,7 @@ function woocommerce_shop_loop_item_title_func(){
 
     echo '<div class="custom-button-wrapper smooth">';
     echo '<a rel="nofollow" href="?add-to-cart='.$product->get_id().'" data-quantity="1" data-product_id="'.$product->get_id().'" data-product_sku="'.$product->get_sku().'" class="btn btn-primary text-white cart-button">Add to Cart</a>';
-    echo '<a rel="nofollow" href="?add-to-wishlist='.$product->get_id().'" data-quantity="1" data-product_id="'.$product->get_id().'" data-product_sku="'.$product->get_sku().'" class="btn btn-outline-primary wishlist-button">Add to Wishlist</a>';
+    echo '<a rel="nofollow" href="?add_to_wishlist='.$product->get_id().'" data-quantity="1" data-product_id="'.$product->get_id().'" data-product_sku="'.$product->get_sku().'" class="btn btn-outline-primary wishlist-button">Add to Wishlist</a>';
     echo '</div><!--custom-button-wrapper-->';
 }
 add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_after_shop_loop_item_title_func', 999 );
@@ -149,10 +149,10 @@ function change_existing_currency_symbol( $currency_symbol, $currency ) {
      return $currency_symbol;
 }
 
-add_action( 'init', 'add_to_wishlist_func' );
+// add_action( 'init', 'add_to_wishlist_func' );
 function add_to_wishlist_func(){
-    if (@$_GET['add-to-wishlist']){
-        $product_id = $_GET['add-to-wishlist'];        
+    if (@$_GET['add_to_wishlist']){
+        $product_id = $_GET['add_to_wishlist'];        
         $cookie_name = 'wishlist_products';
         $cookie_value = $_COOKIE[$cookie_name];
         if(!isset($_COOKIE[$cookie_name])) {
@@ -165,7 +165,7 @@ function add_to_wishlist_func(){
         setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");       
     }
 }
-add_action( 'init', 'remove_from_wishlist_func' );
+// add_action( 'init', 'remove_from_wishlist_func' );
 function remove_from_wishlist_func(){
     if (@$_GET['remove-from-wishlist']){
         $product_id = $_GET['remove-from-wishlist'];    

@@ -110,7 +110,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 										echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>', $product_id ) );
 									}
 									?></div>
-									<a href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) ); ?>" class="text-danger">Delete</a> | <a href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) ); ?>&add-to-wishlist=<?php echo esc_attr( $product_id ) ?>" class="text-info">Add to Wishlist</a>
+									<a href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) ); ?>" class="text-danger">Delete</a> | <a href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) ); ?>&add_to_wishlist=<?php echo esc_attr( $product_id ) ?>" class="text-info">Add to Wishlist</a>
 									</div>
 									</div>
 								</td>
