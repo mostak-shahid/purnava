@@ -54,7 +54,8 @@ if ( $current_user->ID ) {
 							<ul class="list-inline mb-0">
 								<?php
 								if(isset($_COOKIE['wishlist_products'])) {
-									$wishlists = explode(',', $_COOKIE['wishlist_products']);
+									// $wishlists = explode(',', $_COOKIE['wishlist_products']);
+									$wishlists = YITH_WCWL()->count_products();
 								}
 								global $woocommerce;
     							$items = $woocommerce->cart->get_cart();
