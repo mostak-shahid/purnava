@@ -17,7 +17,7 @@ do_action( 'action_before_banner', $page_details );
 				<div class="wrapper">
 					
 					<div class="d-block d-sm-none"><img class="img-fluid img-banner" src="<?php echo aq_resize(wp_get_attachment_url($slide["attachment_id"]),360,150,true) ?>" alt="<?php echo strip_tags(do_shortcode( $slide["title"] )) ?>"></div>
-					<div class="d-none d-sm-block"><?php echo wp_get_attachment_image( $slide["attachment_id"], 'full', false, array( 'class' => 'img-fluid img-banner', 'alt' => $alt_tag['inner'] . strip_tags(do_shortcode( $slide["title"] )) )) ?></div>
+					<div class="d-none d-sm-block"><?php echo wp_get_attachment_image( $slide["attachment_id"], 'full', false, array( 'class' => 'img-fluid img-banner', 'alt' => strip_tags(do_shortcode( $slide["title"] )) )) ?></div>
 					<?php do_action( 'action_before_banner_content', $page_details ); ?>
 					<div class="banner-content">
 						<div class="container">

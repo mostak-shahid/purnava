@@ -143,7 +143,7 @@ function purnava_metaboxes() {
         'name'    => 'Page Row Layout',
         'id'      => $prefix . 'page_section_layout',
         'type'    => 'tb_sorter',
-        'desc'      => '<a href="'.admin_url( 'admin-ajax.php' ).'?action=reset_prl&post_id='.$_GET['post'].'">Click here</a> to reset "Page Row Layout"',
+        'desc'      => '<a href="'.admin_url( 'admin-ajax.php' ).'?action=reset_prl&post_id='.@$_GET['post'].'">Click here</a> to reset "Page Row Layout"',
         'options' => array(
             'Enabled'  => $template_parts['Enabled'],
             'Disabled' => $template_parts['Disabled'], 
