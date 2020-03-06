@@ -734,7 +734,7 @@ function mos_product_carousel_func( $atts = array(), $content = '' ) {
 			// $product->get_price();
 			$html .= '<div class="position-relative text-center product-'.$product_id.'">';
 			$html .= '<div class="badge-con mb-1">';
-			if(get_post_meta( $product_id, '_purnava_product_hot', $single )){
+			if(get_post_meta( $product_id, '_purnava_product_hot', true )){
 	        	$html .= '<span class="badge badge-pill badge-warning badge-product">HOT</span>';
 			}
 			$html .= '</div>';
