@@ -971,7 +971,7 @@ function mos_poduct_categories_func( $atts = array(), $content = '' ) {
 		foreach ($arr as $cat){
 			$html .= '<div class="'.$atts['small'].' '.$atts['large'].' mb-2 mb-lg-0">';
 			$html .= '<div class="mos-category-unit h-100 position-relative text-center">';
-			$thumbnail_id = get_woocommerce_term_meta( $cat, 'thumbnail_id', true );
+			$thumbnail_id = get_term_meta( $cat, 'thumbnail_id', true );
 			$image = wp_get_attachment_url( $thumbnail_id );
 			$term = get_term_by('id', $cat, 'product_cat');
 				$html .= '<img class="img-fluid img-product-category" src="'.$image.'" alt="' . $term->name .'">';

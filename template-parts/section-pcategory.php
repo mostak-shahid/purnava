@@ -24,7 +24,7 @@ do_action( 'action_avobe_pcategory', $page_details );
 						<div class="col-4 col-lg-2 mb-2 mb-lg-0">
 							<div class="unit h-100 position-relative text-center">
 								<?php 
-								$thumbnail_id = get_woocommerce_term_meta( $cat, 'thumbnail_id', true );
+								$thumbnail_id = get_term_meta( $cat, 'thumbnail_id', true );
 								$image = wp_get_attachment_url( $thumbnail_id );
 								?>
 								<img src="<?php echo $image ?>" alt="">
