@@ -91,7 +91,7 @@ function woocommerce_shop_loop_item_title_func(){
 
     echo '<div class="custom-button-wrapper smooth">';
     echo '<a rel="nofollow" href="?add-to-cart='.$product->get_id().'" data-quantity="1" data-product_id="'.$product->get_id().'" data-product_sku="'.$product->get_sku().'" class="btn btn-primary text-white cart-button">Add to Cart</a>';
-    echo '<a rel="nofollow" href="?add_to_wishlist='.$product->get_id().'" data-quantity="1" data-product_id="'.$product->get_id().'" data-product_sku="'.$product->get_sku().'" class="btn btn-outline-primary wishlist-button add_to_wishlist">Add to Wishlist</a>';
+    echo '<a rel="nofollow" href="?add_to_wishlist='.$product->get_id().'" data-quantity="1" data-product_id="'.$product->get_id().'" data-product_sku="'.$product->get_sku().'" class="btn btn-outline-primary wishlist-button">Add to Wishlist</a>';
     echo '</div><!--custom-button-wrapper-->';
 }
 add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_after_shop_loop_item_title_func', 999 );
