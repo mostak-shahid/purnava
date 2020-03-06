@@ -98,7 +98,7 @@ function email_func( $atts = array(), $content = '' ) {
 	$n = 1;
 
 	$html .= '<span class="email-wrap">';
-	if (@$atts['index']) :
+	if ($atts['index']) :
 		$i = $atts['index'] - 1;
 		$html .= '<span class="email">';
 			$html .= '<a class="mailToShow" href="mailto:'.$contact_email[$i].'">'.$contact_email[$i].'</a>';
@@ -346,7 +346,7 @@ function feature_image_func( $atts = array(), $content = '' ) {
 	if (has_post_thumbnail()) $img = get_the_post_thumbnail_url();	
 	elseif(@$mosacademy_options['blog-archive-default']['id']) $img = wp_get_attachment_url( $mosacademy_options['blog-archive-default']['id'] ); 
 	if ($img){
-		if ($atts['wrapper_element']) $html .= '>';
+		if (@$atts['wrapper_element']) $html .= '>';
 		list($width, $height) = getimagesize($img);
 		if ($atts['width'] AND $atts['height']) :
 			if ($width > $atts['width'] AND $height > $atts['height']) $img_url = aq_resize($img, $atts['width'], $atts['height'], true);
