@@ -98,7 +98,7 @@ function email_func( $atts = array(), $content = '' ) {
 	$n = 1;
 
 	$html .= '<span class="email-wrap">';
-	if ($atts['index']) :
+	if (@$atts['index']) :
 		$i = $atts['index'] - 1;
 		$html .= '<span class="email">';
 			$html .= '<a class="mailToShow" href="mailto:'.$contact_email[$i].'">'.$contact_email[$i].'</a>';
