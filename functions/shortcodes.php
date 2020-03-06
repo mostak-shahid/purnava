@@ -279,7 +279,7 @@ function social_menu_fnc( $atts = array(), $content = '' ) {
 		if ($social['link_url'] AND $social['basic_icon']) :
 			$str = '';
 			$basic_icon = do_shortcode(mos_home_url_replace($social['basic_icon']));
-			if ($social['svg_icon']) {
+			if (@$social['svg_icon']) {
 				$str = '<span class="social-svg">'.$social['svg_icon'].'</span>';
 			}
 			else if (filter_var($basic_icon, FILTER_VALIDATE_URL)) {
