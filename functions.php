@@ -20,6 +20,7 @@ require_once('functions/custom-comments.php');
 require_once('functions/theme-filter-hooks.php');
 require_once('functions/ajax.php');
 require_once('functions/post-types.php');
+require_once('functions/taxonomy.php');
 require_once('functions/woo-functions.php');
 require_once('functions/vc-templates.php');
 
