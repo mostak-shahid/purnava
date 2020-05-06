@@ -282,10 +282,6 @@ function mos_embeded_carousel_vc() {
 
 
 function mos_accordion_shortcode($atts){
-	// extract(shortcode_atts(array(
-	// 	'title' => '',
-	// 	'values' => '',
-	// ), $atts));
 	$atts = shortcode_atts( array(
 		'title' => '',
 		'values' => '',
@@ -299,9 +295,7 @@ function mos_accordion_shortcode($atts){
 		$new_line = $data;
 		$new_line['label'] = isset($new_line['label']) ? $new_line['label'] : '';
 		$new_line['excerpt'] = isset($new_line['excerpt']) ? $new_line['excerpt'] : '';
-
 		$new_accordion_value[] = $new_line;
-
 	}
 
 	$idd = 0;
@@ -710,146 +704,6 @@ function mos_event_vc() {
 	));
 }
 
-function mos_product_carousel_func( $atts = array(), $content = '' ) {
-	$html = '';
-	$atts = shortcode_atts( array(
-		'products' => '',
-		'show' => 3,
-		'scroll' => 1,
-		'speed' => 2000,		
-		'dots' => false,
-		'arrows' => false,
-		'breakpoint-1024' => 3,
-		'breakpoint-600' => 2,
-		'breakpoint-480' => 1,
-	), $atts, 'mos_product_carousel' );	
-	$arr = explode(',', $atts['products']);
-	if (sizeof($arr)){
-		$id = rand(1000,9999).strtotime("now");
-		$html .= '<div class="slick-slider mos-product-slider slick-slider-shortcode mos-products" id="'.$id.'">';
-		foreach ($arr as $product_id) {
-			$product = wc_get_product( $product_id );
-			// $product->get_regular_price();
-			// $product->get_sale_price();
-			// $product->get_price();
-			$html .= '<div class="position-relative text-center product-'.$product_id.'">';
-			$html .= '<div class="badge-con mb-1">';
-			if(get_post_meta( $product_id, '_purnava_product_hot', true )){
-	        	$html .= '<span class="badge badge-pill badge-warning badge-product">HOT</span>';
-			}
-			$html .= '</div>';
-			$attachment_id = get_post_thumbnail_id( $product_id );
-			$html .= '<div class="product-image"><img class="img-fluid img-product w-100" src="'.aq_resize(wp_get_attachment_url( $attachment_id ), 364,275,true).'" alt="'.get_the_title($product_id).'"></div>';
-			$html .= '<div class="product-title">'.get_the_title($product_id).'</div>';
-			$html .= '<div class="product-price">';
-			$html .= '<span class="price">';
-			if ($product->get_sale_price()){
-				$html .= '<del>'.wc_price($product->get_regular_price()).'</del>';
-				$html .= '<ins>'.wc_price($product->get_sale_price()).'</ins>';
-			} else {
-				$html .= '<ins>'.wc_price($product->get_regular_price()).'</ins>';				
-			}
-			$html .= '</span>';
-			
-			$html .= '</div>';
-			if ($product->get_sale_price()) {
-				$html .= '<div class="product-off">'.number_format((100 * ($product->get_regular_price()-$product->get_sale_price()))/$product->get_regular_price(), 2) .'%</div>';
-			}
-			$html .= '</div>';
-		}
-		$html .= '</div>';
-	}
-	$dots = ($atts['dots'])? 'true' : 'false';
-	$arrows = ($atts['arrows'])? 'true' : 'false';
-	$html .= '<script>jQuery(document).ready(function($){$("#'.$id.'").slick({slidesToShow:'.$atts['show'].',slidesToScroll:'.$atts['scroll'].',autoplay:true,autoplaySpeed:'.$atts['speed'].',focusOnSelect:true,dots:'.$dots.',arrows:'.$arrows.',responsive:[{breakpoint:1024,settings:{slidesToShow:'.$atts['breakpoint-1024'].',}},{breakpoint:600,settings:{slidesToShow:'.$atts['breakpoint-600'].',centerMode:true,}},{breakpoint:480,settings:{slidesToShow:'.$atts['breakpoint-480'].',centerMode:true}}]})})</script>'; 
-	
-	return $html;
-}
-add_shortcode( 'mos_product_carousel', 'mos_product_carousel_func' );
-add_action( 'vc_before_init', 'mos_product_carousel_vc' );
-function mos_product_carousel_vc() {
-	$products = mos_get_posts('product');
-	$option = array();
-	foreach ($products as $id => $name) {
-		$option[$name] = $id;
-	}
-	vc_map( array(
-		"name" => __( "Mos Product Carousel", "my-text-domain" ),
-		"base" => "mos_product_carousel",
-		"class" => "",
-		"category" => __( "Mos Elements", "my-text-domain"),
-		// 'admin_enqueue_js' => array(get_template_directory_uri().'/vc_extend/bartag.js'),
-		// 'admin_enqueue_css' => array(get_template_directory_uri().'/vc_extend/bartag.css'),
-		'icon'     => get_template_directory_uri() . '/images/mos-vc.png',
-				
-		"params" => array(
-			array(
-				"type" => "dropdown_multi",
-				"holder" => "div",
-				"class" => "",
-				"heading" => __( "Products", "my-text-domain" ),
-				"param_name" => "products",
-				// "admin_label" => false,
-				"value" => $option,
-				"description" => __( "Products for slider.", "my-text-domain" ),
-			),
-			array(
-				"type" => "textfield",
-				"class" => "",
-				"heading" => __( "Slides to Show", "my-text-domain" ),
-				"param_name" => "show",
-				"value" => __( 3, "my-text-domain" ),
-			),
-			array(
-				"type" => "textfield",
-				"class" => "",
-				"heading" => __( "Slides to Scroll", "my-text-domain" ),
-				"param_name" => "scroll",
-				"value" => __( 1, "my-text-domain" ),
-			),
-			array(
-				"type" => "textfield",
-				"class" => "",
-				"heading" => __( "Slides Speed", "my-text-domain" ),
-				"param_name" => "speed",
-				"value" => __( 2000, "my-text-domain" ),
-			),
-			array(
-				"type" => "checkbox",
-				"class" => "",
-				"heading" => __( "Dots", "my-text-domain" ),
-				"param_name" => "dots",
-			),
-			array(
-				"type" => "checkbox",
-				"class" => "",
-				"heading" => __( "Arrows", "my-text-domain" ),
-				"param_name" => "arrows",
-			),
-			array(
-				"type" => "textfield",
-				"class" => "",
-				"heading" => __( "Break Point 1024", "my-text-domain" ),
-				"param_name" => "breakpoint-1024",
-				"value" => __( 3, "my-text-domain" ),
-			),
-			array(
-				"type" => "textfield",
-				"class" => "",
-				"heading" => __( "Break Point 600", "my-text-domain" ),
-				"param_name" => "breakpoint-600",
-				"value" => __( 2, "my-text-domain" ),
-			),
-			array(
-				"type" => "textfield",
-				"class" => "",
-				"heading" => __( "Break Point 400", "my-text-domain" ),
-				"param_name" => "breakpoint-400",
-				"value" => __( 1, "my-text-domain" ),
-			),
-		)
-	));
-}
 function mos_image_carousel_func( $atts = array(), $content = '' ) {
 	$html = '';
 	$atts = shortcode_atts( array(
@@ -958,6 +812,279 @@ function mos_image_carousel_vc() {
 		)
 	));
 }
+function mos_image_carousel_link_shortcode($atts){
+	$atts = shortcode_atts( array(
+		'values' => '',
+		'show' => 3,
+		'scroll' => 1,
+		'speed' => 2000,		
+		'dots' => false,
+		'arrows' => false,
+		'breakpoint-1024' => 3,
+		'breakpoint-600' => 2,
+		'breakpoint-480' => 1,
+	), $atts, 'mos-image-carousel-link' );	
+
+	$list = '';
+	//$list = '<h4>'.$atts['title'].'</h4>';
+	$values = vc_param_group_parse_atts($atts['values']);
+
+	$new_accordion_value = array();
+	foreach($values as $data){
+		$new_line = $data;
+		$new_line['image'] = isset($new_line['image']) ? $new_line['image'] : '';
+		$new_line['link'] = isset($new_line['link']) ? $new_line['link'] : '';
+		$new_accordion_value[] = $new_line;
+	}
+
+	$idd = 0;
+	$id = rand(1000,9999).strtotime("now");
+	$list .= '<div class="slick-slider slick-slider-shortcode" id="'.$id.'">';
+	foreach($new_accordion_value as $accordion):
+		if($accordion['image']):
+			$idd++;		
+			if($accordion['link']) $list .= '<a href="'.$accordion['link'].'">';
+			$list .= '<img class="img-fluid img-slick-carousel" src="'.wp_get_attachment_url($accordion['image']).'">';
+			if($accordion['link']) $list .= '</a>';
+		endif;
+	endforeach;
+	$list .= '</div>';
+	$dots = ($atts['dots'])? 'true' : 'false';
+	$arrows = ($atts['arrows'])? 'true' : 'false';
+	$list .= '<script>jQuery(document).ready(function($){$("#'.$id.'").slick({slidesToShow:'.$atts['show'].',slidesToScroll:'.$atts['scroll'].',autoplay:true,autoplaySpeed:'.$atts['speed'].',focusOnSelect:true,dots:'.$dots.',arrows:'.$arrows.',responsive:[{breakpoint:1024,settings:{slidesToShow:'.$atts['breakpoint-1024'].',}},{breakpoint:600,settings:{slidesToShow:'.$atts['breakpoint-600'].',centerMode:true,centerPadding: "60px 0px 0px",}},{breakpoint:480,settings:{slidesToShow:'.$atts['breakpoint-480'].',centerMode:true,centerPadding: "60px 0px 0px",}}]})})</script>'; 
+	return $list;
+	wp_reset_query();
+}
+add_shortcode('mos-image-carousel-link', 'mos_image_carousel_link_shortcode');
+
+add_action( 'vc_before_init', 'mos_image_carousel_link_vc' );
+function mos_image_carousel_link_vc() {
+	vc_map(array(
+		'name' => 'Mos Image Carousel with link',
+		'base' => 'mos-image-carousel-link',
+		"category" => __( "Mos Elements", "my-text-domain"),
+		'icon'     => get_template_directory_uri() . '/images/mos-vc.png',
+		'params' => array(
+			array(
+				'type' => 'param_group',
+				'param_name' => 'values',
+				'params' => array(
+					array(
+						'type' => 'attach_image',
+						'name' => 'Image',
+						'heading' => __('Image', 'rrf-mos'),
+						'param_name' => 'image',
+					),
+					array(
+						'type' => 'textfield',
+						'name' => 'Link',
+						'heading' => __('Link', 'rrf-mos'),
+						'param_name' => 'link',
+					)
+				)
+
+			),
+			array(
+				"type" => "textfield",
+				"class" => "",
+				"heading" => __( "Slides to Show", "my-text-domain" ),
+				"param_name" => "show",
+				"value" => __( 3, "my-text-domain" ),
+			),
+			array(
+				"type" => "textfield",
+				"class" => "",
+				"heading" => __( "Slides to Scroll", "my-text-domain" ),
+				"param_name" => "scroll",
+				"value" => __( 1, "my-text-domain" ),
+			),
+			array(
+				"type" => "textfield",
+				"class" => "",
+				"heading" => __( "Slides Speed", "my-text-domain" ),
+				"param_name" => "speed",
+				"value" => __( 2000, "my-text-domain" ),
+			),
+			array(
+				"type" => "checkbox",
+				"class" => "",
+				"heading" => __( "Dots", "my-text-domain" ),
+				"param_name" => "dots",
+			),
+			array(
+				"type" => "checkbox",
+				"class" => "",
+				"heading" => __( "Arrows", "my-text-domain" ),
+				"param_name" => "arrows",
+			),
+			array(
+				"type" => "textfield",
+				"class" => "",
+				"heading" => __( "Break Point 1024", "my-text-domain" ),
+				"param_name" => "breakpoint-1024",
+				"value" => __( 3, "my-text-domain" ),
+			),
+			array(
+				"type" => "textfield",
+				"class" => "",
+				"heading" => __( "Break Point 600", "my-text-domain" ),
+				"param_name" => "breakpoint-600",
+				"value" => __( 2, "my-text-domain" ),
+			),
+			array(
+				"type" => "textfield",
+				"class" => "",
+				"heading" => __( "Break Point 400", "my-text-domain" ),
+				"param_name" => "breakpoint-400",
+				"value" => __( 1, "my-text-domain" ),
+			),
+		),
+
+	));
+}
+
+function mos_product_carousel_func( $atts = array(), $content = '' ) {
+	$html = '';
+	$atts = shortcode_atts( array(
+		'products' => '',
+		'show' => 3,
+		'scroll' => 1,
+		'speed' => 2000,		
+		'dots' => false,
+		'arrows' => false,
+		'breakpoint-1024' => 3,
+		'breakpoint-600' => 2,
+		'breakpoint-480' => 1,
+	), $atts, 'mos_product_carousel' );	
+	$arr = explode(',', $atts['products']);
+	if (sizeof($arr)){
+		$id = rand(1000,9999).strtotime("now");
+		$html .= '<div class="slick-slider mos-product-slider slick-slider-shortcode mos-products" id="'.$id.'">';
+		foreach ($arr as $product_id) {
+			$product = wc_get_product( $product_id );
+			// $product->get_regular_price();
+			// $product->get_sale_price();
+			// $product->get_price();
+			$html .= '<div class="position-relative text-center product-'.$product_id.'">';
+			$html .= '<div class="badge-con mb-1">';
+			if(get_post_meta( $product_id, '_purnava_product_hot', true )){
+	        	$html .= '<span class="badge badge-pill badge-warning badge-product">HOT</span>';
+			}
+			$html .= '</div>';
+			$attachment_id = get_post_thumbnail_id( $product_id );
+			$html .= '<div class="product-image"><img class="img-fluid img-product w-100" src="'.aq_resize(wp_get_attachment_url( $attachment_id ), 364,275,true).'" alt="'.get_the_title($product_id).'"></div>';
+			$html .= '<div class="product-title">'.get_the_title($product_id).'</div>';
+			$html .= '<div class="product-price">';
+			$html .= '<span class="price">';
+			if ($product->get_sale_price()){
+				$html .= '<del>'.wc_price($product->get_regular_price()).'</del>';
+				$html .= '<ins>'.wc_price($product->get_sale_price()).'</ins>';
+			} else {
+				$html .= '<ins>'.wc_price($product->get_regular_price()).'</ins>';				
+			}
+			$html .= '</span>';
+			
+			$html .= '</div>';
+			if ($product->get_sale_price()) {
+				$html .= '<div class="product-off">'.number_format((100 * ($product->get_regular_price()-$product->get_sale_price()))/$product->get_regular_price(), 2) .'%</div>';
+			}
+			$html .= '<a href="'.get_permalink($product_id).'" class="hidden-link">Read More</a>';
+			$html .= '</div>';
+		}
+		$html .= '</div>';
+	}
+	$dots = ($atts['dots'])? 'true' : 'false';
+	$arrows = ($atts['arrows'])? 'true' : 'false';
+	$html .= '<script>jQuery(document).ready(function($){$("#'.$id.'").slick({slidesToShow:'.$atts['show'].',slidesToScroll:'.$atts['scroll'].',autoplay:true,autoplaySpeed:'.$atts['speed'].',focusOnSelect:true,dots:'.$dots.',arrows:'.$arrows.',responsive:[{breakpoint:1024,settings:{slidesToShow:'.$atts['breakpoint-1024'].',}},{breakpoint:600,settings:{slidesToShow:'.$atts['breakpoint-600'].',centerMode:true,}},{breakpoint:480,settings:{slidesToShow:'.$atts['breakpoint-480'].',centerMode:true}}]})})</script>'; 
+	
+	return $html;
+}
+add_shortcode( 'mos_product_carousel', 'mos_product_carousel_func' );
+add_action( 'vc_before_init', 'mos_product_carousel_vc' );
+function mos_product_carousel_vc() {
+	$products = mos_get_posts('product');
+	$option = array();
+	foreach ($products as $id => $name) {
+		$option[$name] = $id;
+	}
+	vc_map( array(
+		"name" => __( "Mos Product Carousel", "my-text-domain" ),
+		"base" => "mos_product_carousel",
+		"class" => "",
+		"category" => __( "Mos Elements", "my-text-domain"),
+		// 'admin_enqueue_js' => array(get_template_directory_uri().'/vc_extend/bartag.js'),
+		// 'admin_enqueue_css' => array(get_template_directory_uri().'/vc_extend/bartag.css'),
+		'icon'     => get_template_directory_uri() . '/images/mos-vc.png',
+				
+		"params" => array(
+			array(
+				"type" => "dropdown_multi",
+				"holder" => "div",
+				"class" => "",
+				"heading" => __( "Products", "my-text-domain" ),
+				"param_name" => "products",
+				// "admin_label" => false,
+				"value" => $option,
+				"description" => __( "Products for slider.", "my-text-domain" ),
+			),
+			array(
+				"type" => "textfield",
+				"class" => "",
+				"heading" => __( "Slides to Show", "my-text-domain" ),
+				"param_name" => "show",
+				"value" => __( 3, "my-text-domain" ),
+			),
+			array(
+				"type" => "textfield",
+				"class" => "",
+				"heading" => __( "Slides to Scroll", "my-text-domain" ),
+				"param_name" => "scroll",
+				"value" => __( 1, "my-text-domain" ),
+			),
+			array(
+				"type" => "textfield",
+				"class" => "",
+				"heading" => __( "Slides Speed", "my-text-domain" ),
+				"param_name" => "speed",
+				"value" => __( 2000, "my-text-domain" ),
+			),
+			array(
+				"type" => "checkbox",
+				"class" => "",
+				"heading" => __( "Dots", "my-text-domain" ),
+				"param_name" => "dots",
+			),
+			array(
+				"type" => "checkbox",
+				"class" => "",
+				"heading" => __( "Arrows", "my-text-domain" ),
+				"param_name" => "arrows",
+			),
+			array(
+				"type" => "textfield",
+				"class" => "",
+				"heading" => __( "Break Point 1024", "my-text-domain" ),
+				"param_name" => "breakpoint-1024",
+				"value" => __( 3, "my-text-domain" ),
+			),
+			array(
+				"type" => "textfield",
+				"class" => "",
+				"heading" => __( "Break Point 600", "my-text-domain" ),
+				"param_name" => "breakpoint-600",
+				"value" => __( 2, "my-text-domain" ),
+			),
+			array(
+				"type" => "textfield",
+				"class" => "",
+				"heading" => __( "Break Point 400", "my-text-domain" ),
+				"param_name" => "breakpoint-400",
+				"value" => __( 1, "my-text-domain" ),
+			),
+		)
+	));
+}
+
 function mos_poduct_categories_func( $atts = array(), $content = '' ) {
 	$html = '';
 	$atts = shortcode_atts( array(
