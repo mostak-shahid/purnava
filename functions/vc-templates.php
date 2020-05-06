@@ -844,7 +844,7 @@ function mos_image_carousel_link_shortcode($atts){
 		if($accordion['image']):
 			$idd++;		
 			if($accordion['link']) $list .= '<a href="'.$accordion['link'].'">';
-			$list .= '<img class="img-fluid img-slick-carousel" src="'.wp_get_attachment_url($accordion['image']).'">';
+			$list .= '<img class="img-fluid img-slick-carousel" src="'.aq_resize(wp_get_attachment_url($accordion['image']),435,300,true).'">';
 			if($accordion['link']) $list .= '</a>';
 		endif;
 	endforeach;
