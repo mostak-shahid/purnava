@@ -326,7 +326,7 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 #newletter-section .mc4wp-form{display: inline-block;width: 100%;max-width: 410px;margin-left: 6.5vw;vertical-align: top;}
 #newletter-section .mc4wp-form .form-control{border-style: none;border-bottom: 1px solid rgba(255,255,255,.7);border-radius: 0;background-color: transparent;}
 #newletter-section .mc4wp-form .input-group-append .btn{border-bottom:1px solid rgba(255,255,255,.7);border-radius: 0;color: rgba(255,255,255,.9);}
-.slick-dots{position: relative;bottom: unset;}
+.slick-dots{position: relative;bottom: unset;margin-bottom: 0;}
 .slick-dots li button:before {
     position: absolute;
     top: 0;
