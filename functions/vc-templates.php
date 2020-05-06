@@ -819,7 +819,6 @@ function mos_image_carousel_link_shortcode($atts){
 		'scroll' => 1,
 		'speed' => 2000,		
 		'dots' => false,
-		'arrows' => false,
 		'breakpoint-1024' => 3,
 		'breakpoint-600' => 2,
 		'breakpoint-480' => 1,
@@ -850,8 +849,7 @@ function mos_image_carousel_link_shortcode($atts){
 	endforeach;
 	$list .= '</div>';
 	$dots = ($atts['dots'])? 'true' : 'false';
-	$arrows = ($atts['arrows'])? 'true' : 'false';
-	$list .= '<script>jQuery(document).ready(function($){$("#'.$id.'").slick({slidesToShow:'.$atts['show'].',slidesToScroll:'.$atts['scroll'].',autoplay:true,autoplaySpeed:'.$atts['speed'].',focusOnSelect:true,dots:'.$dots.',arrows:'.$arrows.',responsive:[{breakpoint:1024,settings:{slidesToShow:'.$atts['breakpoint-1024'].',}},{breakpoint:600,settings:{slidesToShow:'.$atts['breakpoint-600'].',centerMode:true,centerPadding: "60px 0px 0px",}},{breakpoint:480,settings:{slidesToShow:'.$atts['breakpoint-480'].',centerMode:true,centerPadding: "60px 0px 0px",}}]})})</script>'; 
+	$list .= '<script>jQuery(document).ready(function($){$("#'.$id.'").slick({slidesToShow:'.$atts['show'].',slidesToScroll:'.$atts['scroll'].',autoplay:true,autoplaySpeed:'.$atts['speed'].',focusOnSelect:true,dots:'.$dots.',responsive:[{breakpoint:1024,settings:{slidesToShow:'.$atts['breakpoint-1024'].',}},{breakpoint:600,settings:{slidesToShow:'.$atts['breakpoint-600'].',centerMode:true,centerPadding: "60px 0px 0px",}},{breakpoint:480,settings:{slidesToShow:'.$atts['breakpoint-480'].',centerMode:true,centerPadding: "60px 0px 0px",}}]})})</script>'; 
 	return $list;
 	wp_reset_query();
 }
@@ -910,12 +908,6 @@ function mos_image_carousel_link_vc() {
 				"class" => "",
 				"heading" => __( "Dots", "my-text-domain" ),
 				"param_name" => "dots",
-			),
-			array(
-				"type" => "checkbox",
-				"class" => "",
-				"heading" => __( "Arrows", "my-text-domain" ),
-				"param_name" => "arrows",
 			),
 			array(
 				"type" => "textfield",
