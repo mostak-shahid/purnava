@@ -234,11 +234,12 @@ function mos_embeded_carousel_shortcode($atts){
 		$list .= '<div class="slick-slider mos-embeded-slider">';
 		foreach($new_data_value as $data):
 			$idd++;
+			$video = $data['url'];
 			$list .=
 			'<div class="position-relative unit unit-'.$idd.'">
 				<img class="img-fluid img-embeded-banner w-100" src="'.aq_resize(wp_get_attachment_url($data['image']), 200, 150, true).'">
 				<span class="videoicon"></span>
-				<a class="hidden-link" href="'.$data['url'].' target="_blank">Read More</a> 
+				<a class="hidden-link" href="'.$video.'" target="_blank">Read More</a> 
 			</div>';
 		endforeach;
 		$list .= '</div>';
