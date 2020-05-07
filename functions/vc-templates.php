@@ -626,10 +626,11 @@ function mos_event_func( $atts = array(), $content = '' ) {
 	$atts = shortcode_atts( array(
 		'loadmore' => 'no',
 		'carousel' => 'no',
+		'posts_per_page'=>-1,
 	), $atts, 'mos-event' );	
 	$args = array(
 		'post_type' => 'event',
-		'posts_per_page' => -1,
+		'posts_per_page' => ($atts['posts_per_page'])?$atts['posts_per_page']:-1,
 	);
 	$query = new WP_Query( $args );
 	$total_post = $query->post_count;
@@ -680,6 +681,13 @@ function mos_event_vc() {
 		// 'admin_enqueue_css' => array(get_template_directory_uri().'/vc_extend/bartag.css'),
 		'icon'     => get_template_directory_uri() . '/images/mos-vc.png',				
 		"params" => array(
+			array(
+				"type" => "textfield",
+				"class" => "",
+				"heading" => __( "Event to Show", "my-text-domain" ),
+				"param_name" => "posts_per_page",
+				"value" => __( -1, "my-text-domain" ),
+			),
 			array(
 				"type" => "dropdown",
 				"class" => "",
