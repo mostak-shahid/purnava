@@ -3,24 +3,24 @@ function purnava_metaboxes() {
     $prefix = '_purnava_';
     global $purnava,$template_parts;
 
-    $product_additional = new_cmb2_box(array(
+    $event_additional = new_cmb2_box(array(
         'id' => $prefix . 'event_settings',
         'title' => __('Event Settings', 'cmb2'),
         'object_types' => array('event'),
     ));
-    $product_additional->add_field( array(
+    $event_additional->add_field( array(
         'name' => __( 'Event Location', 'cmb2' ),
         'id'   => $prefix . 'event_location',
         'type' => 'text',
     )); 
-    $product_additional->add_field( array(
+    $event_additional->add_field( array(
         'name' => 'Event Date',
         'id'   => $prefix . 'event_date',
         'type' => 'text_date',
         // 'timezone_meta_key' => 'wiki_test_timezone',
         'date_format' => 'j M Y',
     ));
-    $product_additional->add_field( array(
+    $event_additional->add_field( array(
         'name' => 'Event Time',
         'id' => $prefix . 'event_time',
         'type' => 'text_time',
@@ -53,6 +53,11 @@ function purnava_metaboxes() {
     $product_additional->add_field( array(
         'name' => __( 'Package Size', 'cmb2' ),
         'id'   => $prefix . 'product_package_size',
+        'type' => 'text',
+    ));
+    $product_additional->add_field( array(
+        'name' => __( 'Strength', 'cmb2' ),
+        'id'   => $prefix . 'product_strength',
         'type' => 'text',
     ));
     $product_additional->add_field( array(

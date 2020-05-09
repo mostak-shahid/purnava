@@ -84,6 +84,12 @@ get_header( 'shop' ); ?>
 								<h5><?php echo get_post_meta( $product->get_id(), '_purnava_product_formulation', true ); ?></h5>
 							</div>
 						</div>
+						<div class="col-12">
+							<div class="details-desc h-100 border-bottom">
+								<div class="info-title">Strength</div>
+								<h5><?php echo get_post_meta( $product->get_id(), '_purnava_product_strength', true ); ?></h5>
+							</div>
+						</div>
 						<div class="col-6">
 							<div class="details-desc h-100 border-bottom">
 								<div class="info-title">Package Size</div>
