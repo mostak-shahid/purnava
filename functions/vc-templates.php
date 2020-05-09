@@ -962,35 +962,37 @@ function mos_product_carousel_func( $atts = array(), $content = '' ) {
 		$id = rand(1000,9999).strtotime("now");
 		$html .= '<div class="slick-slider mos-product-slider slick-slider-shortcode mos-products" id="'.$id.'">';
 		foreach ($arr as $product_id) {
-			$product = wc_get_product( $product_id );
-			// $product->get_regular_price();
-			// $product->get_sale_price();
-			// $product->get_price();
-			$html .= '<div class="position-relative text-center product-'.$product_id.'">';
-			$html .= '<div class="badge-con mb-1">';
-			if(get_post_meta( $product_id, '_purnava_product_hot', true )){
-	        	$html .= '<span class="badge badge-pill badge-warning badge-product">HOT</span>';
+			if ( get_post_status($product_id) == "publish") {
+				$product = wc_get_product( $product_id );
+				// $product->get_regular_price();
+				// $product->get_sale_price();
+				// $product->get_price();
+				$html .= '<div class="position-relative text-center product-'.$product_id.'">';
+				$html .= '<div class="badge-con mb-1">';
+				if(get_post_meta( $product_id, '_purnava_product_hot', true )){
+		        	$html .= '<span class="badge badge-pill badge-warning badge-product">HOT</span>';
+				}
+				$html .= '</div>';
+				$attachment_id = get_post_thumbnail_id( $product_id );
+				$html .= '<div class="product-image"><img class="img-fluid img-product w-100" src="'.aq_resize(wp_get_attachment_url( $attachment_id ), 364,275,true).'" alt="'.get_the_title($product_id).'"></div>';
+				$html .= '<div class="product-title">'.get_the_title($product_id).'</div>';
+				$html .= '<div class="product-price">';
+				$html .= '<span class="price">';
+				if ($product->get_sale_price()){
+					$html .= '<del>'.wc_price($product->get_regular_price()).'</del>';
+					$html .= '<ins>'.wc_price($product->get_sale_price()).'</ins>';
+				} else {
+					$html .= '<ins>'.wc_price($product->get_regular_price()).'</ins>';				
+				}
+				$html .= '</span>';
+				
+				$html .= '</div>';
+				if ($product->get_sale_price()) {
+					$html .= '<div class="product-off">'.number_format((100 * ($product->get_regular_price()-$product->get_sale_price()))/$product->get_regular_price(), 2) .'%</div>';
+				}
+				$html .= '<a href="'.get_permalink($product_id).'" class="hidden-link">Read More</a>';
+				$html .= '</div>';
 			}
-			$html .= '</div>';
-			$attachment_id = get_post_thumbnail_id( $product_id );
-			$html .= '<div class="product-image"><img class="img-fluid img-product w-100" src="'.aq_resize(wp_get_attachment_url( $attachment_id ), 364,275,true).'" alt="'.get_the_title($product_id).'"></div>';
-			$html .= '<div class="product-title">'.get_the_title($product_id).'</div>';
-			$html .= '<div class="product-price">';
-			$html .= '<span class="price">';
-			if ($product->get_sale_price()){
-				$html .= '<del>'.wc_price($product->get_regular_price()).'</del>';
-				$html .= '<ins>'.wc_price($product->get_sale_price()).'</ins>';
-			} else {
-				$html .= '<ins>'.wc_price($product->get_regular_price()).'</ins>';				
-			}
-			$html .= '</span>';
-			
-			$html .= '</div>';
-			if ($product->get_sale_price()) {
-				$html .= '<div class="product-off">'.number_format((100 * ($product->get_regular_price()-$product->get_sale_price()))/$product->get_regular_price(), 2) .'%</div>';
-			}
-			$html .= '<a href="'.get_permalink($product_id).'" class="hidden-link">Read More</a>';
-			$html .= '</div>';
 		}
 		$html .= '</div>';
 	}
