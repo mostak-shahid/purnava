@@ -120,9 +120,9 @@ get_header( 'shop' ); ?>
 							<table class="table table-borderless">
 							<?php foreach ($benifits as $benifit) : ?>
 								<tr>
-									<th><?php echo $benifit['title'] ?></th>
+									<th><?php echo @$benifit['title'] ?></th>
 									<th>:</th>
-									<td><?php echo $benifit['details'] ?></td>
+									<td><?php echo @$benifit['details'] ?></td>
 								</tr>
 							<?php endforeach; ?>
 							</table>
