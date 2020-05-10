@@ -15,6 +15,13 @@ jQuery(document).ready(function($){
         alert(href);
         event.preventDefault();
     });
+    $('.embeded-modal-fire').click(function(event){
+        event.preventDefault();
+        var href = $(this).attr('href');
+        $('#embededModal').find('.modal-content').html('<div class="embed-responsive embed-responsive-21by9"><iframe class="embed-responsive-item" src="'+href+'"></iframe></div>');
+        $('#embededModal').modal('show');
+        // alert(href);
+    });
     $('.auth-form-wrapper .input-group-text').click(function(){
         var input = $(this).closest('.form-group').find('input');
         var intype = input.attr('type'); 

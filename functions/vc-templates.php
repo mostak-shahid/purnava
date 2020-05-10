@@ -74,7 +74,7 @@ function mos_modal_func( $atts = array(), $content = '' ) {
 		if ($atts['icon_name']) $html .= '<i class="'.$atts['icon_name'].'"></i>';
 			$html .=$atts['btn-text'].'</button>';
 		$html .= '<div class="modal fade '.$atts['extraclass'].'" id="'.$atts['id'].'" tabindex="-1" role="dialog" aria-labelledby="'.$atts['id'].'Label" aria-hidden="true">';
-			$html .= '<div class="modal-dialog modal-dialog-centered" role="document">';
+			$html .= '<div class="modal-dialog modal-dialog-centered modal-800" role="document">';
 				$html .= '<div class="modal-content">';
 				
 					if ($atts['enable-header']) :
@@ -228,7 +228,16 @@ function mos_embeded_carousel_shortcode($atts){
 		$new_data_value[] = $new_line;
 
 	}
-
+	$list .= '
+	<div id="embededModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-800">
+            <div class="modal-content">
+                
+                    Loading...
+                
+            </div>
+        </div>
+    </div>';
 	$idd = 0;
 	if ($new_data_value) :
 		$list .= '<div class="slick-slider mos-embeded-slider">';
@@ -239,7 +248,7 @@ function mos_embeded_carousel_shortcode($atts){
 			'<div class="position-relative unit unit-'.$idd.'">
 				<img class="img-fluid img-embeded-banner w-100" src="'.aq_resize(wp_get_attachment_url($data['image']), 200, 150, true).'">
 				<span class="videoicon"></span>
-				<a class="hidden-link" href="'.$video.'" target="_blank">Read More</a> 
+				<a class="hidden-link embeded-modal-fire" href="'.$video.'" target="_blank">Read More</a> 
 			</div>';
 		endforeach;
 		$list .= '</div>';

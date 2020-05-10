@@ -444,7 +444,9 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 }
 
 /* Large devices (desktops,992px and up) */
-@media (min-width:992px){}
+@media (min-width:992px){
+	.modal-800{max-width: 80%}
+}
 
 /* Extra large devices (large desktops,1200px and up) */
 @media (min-width:1200px){}
