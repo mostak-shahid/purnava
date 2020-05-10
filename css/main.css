@@ -90,6 +90,7 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 .slick-slide {margin: 0 7px;}
 .slick-list {margin: 0 -7px;}
 .slick-centered .slick-list {margin: 0;}
+.slick-slider .img-slick-carousel{width: 100%;height: auto;}
 
 .back-to-shop{padding-top: 30px;padding-bottom: 30px;}
 .back-to-shop a{color: #464FA1;font-weight: bold; font-size: 16px; line-height: 26px;}

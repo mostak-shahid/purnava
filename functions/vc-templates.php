@@ -859,10 +859,12 @@ function mos_image_carousel_link_shortcode($atts){
 	$list .= '<div class="slick-slider slick-slider-shortcode" id="'.$id.'">';
 	foreach($new_accordion_value as $accordion):
 		if($accordion['image']):
-			$idd++;		
-			if($accordion['link']) $list .= '<a href="'.$accordion['link'].'">';
-			$list .= '<img class="img-fluid img-slick-carousel" src="'.aq_resize(wp_get_attachment_url($accordion['image']),435,300,true).'">';
-			if($accordion['link']) $list .= '</a>';
+			$idd++;	
+			$list .= '<div class="slick-item">';	
+				if($accordion['link']) $list .= '<a href="'.$accordion['link'].'">';
+				$list .= '<img class="img-fluid img-slick-carousel" src="'.aq_resize(wp_get_attachment_url($accordion['image']),435,300,true).'">';
+				if($accordion['link']) $list .= '</a>';
+			$list .= '</div>';
 		endif;
 	endforeach;
 	$list .= '</div>';
