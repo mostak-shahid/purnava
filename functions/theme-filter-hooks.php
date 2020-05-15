@@ -58,6 +58,8 @@ add_filter( 'user_contactmethods', 'mosacademy_additional_fields' );
 function mos_loging_logo() { 
 ?> 
     <style type="text/css"> 
+    body.login{background: #036cb7;}
+    body.login #backtoblog a, body.login #nav a{color: #ffffff}
     body.login div#login h1 a {
         background-image: url(<?php echo get_template_directory_uri() . '/images/login-logo.png' ?>); 
         padding-bottom: 30px;
