@@ -43,13 +43,14 @@ function mos_get_terms ($taxonomy = 'category') {
 }
 /*Variables*/
 $template_parts = array(
-    'Enabled'  => array(),
+    'Enabled'  => array(
+        'content' => 'Page Content',
+    ),
     'Disabled' => array(
         'banner' => 'Theme Banner',
-        'content' => 'Page Content',
-        'ads' => 'Ads Section',
-        'pcategory' => 'Category Section',
-        'topselling' => 'Top Selling',
+        // 'ads' => 'Ads Section',
+        // 'pcategory' => 'Category Section',
+        // 'topselling' => 'Top Selling',
     ),
 );
 $districts = array(
