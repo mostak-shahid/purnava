@@ -142,7 +142,7 @@ if ($delete >-1 ){
 							<div class="address-unit add-new d-flex justify-content-center align-items-center add-address edit-modal" data-id="new">
 								<div class="wrap text-center">
 									<i class="fa fa-plus"></i>
-									<div class="text">Add New</div>
+									<div class="text">Add New Address</div>
 								</div>
 							</div>
 						</div>
