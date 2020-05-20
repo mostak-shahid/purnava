@@ -148,8 +148,8 @@ if ($delete >-1 ){
 						</div>
 					</div>
 				<?php else : ?>
-					If you haven't registered yet please <a href="<?php echo home_url( '/register/' )?>?redirect_to=<?php echo home_url( '/checkout/' );?>">create an account
-					</a> from here, or <a href="<?php echo home_url( '/log-in/' )?>?redirect_to=<?php echo home_url( '/checkout/' );?>">login</a> from here, or <a class="guest-checkout" href="#">click here</a> for guest checkout.
+					If you haven't registered yet please <a class="auth-link" href="<?php echo home_url( '/register/' )?>?redirect_to=<?php echo home_url( '/checkout/' );?>" data-url="<?php echo home_url( '/register/' )?>">create an account
+					</a> from here, or <a class="auth-link" href="<?php echo home_url( '/log-in/' )?>?redirect_to=<?php echo home_url( '/checkout/' );?>" data-url="<?php echo home_url( '/log-in/' )?>">login</a> from here, or <a class="guest-checkout" href="#">click here</a> for guest checkout.
 				<?php endif; ?>
 			</div>
 			<div class="col2-set d-none" id="customer_details">

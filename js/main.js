@@ -12,6 +12,27 @@ jQuery(document).ready(function($){
         $('.col2-set').toggleClass('d-none');
         $('#place_order').toggle();
     });
+    $('.auth-link').click(function(e){
+        e.preventDefault();   
+        $url = $(this).data('url');
+        setCookie('checkout-redirect','yes',1); 
+        window.location.href = $url;    
+    });
+    checkoutRedirect();
+    function checkoutRedirect(){        
+        var url = window.location.href;
+        var home = '';
+        var arr = url.split('/');
+        for (var i = 0; i <= arr.length - 3; i++) {
+            home += arr[i] + '/';
+        }
+        // console.log(home);
+        if(arr[arr.length - 2] == 'my-account' && getCookie('checkout-redirect') == 'yes'){
+            setCookie('checkout-redirect','no',1);
+            window.location.href = home + 'checkout';
+        }
+        console.log(getCookie('checkout-redirect'));
+    }
     function modalshow(){
         $('#exampleModal').modal('show')
     }
