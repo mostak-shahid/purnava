@@ -7,6 +7,11 @@ jQuery(document).ready(function($){
     //     decrementButton: "<i class='fa fa-minus'></i>", // button text
     //     incrementButton: "<i class='fa fa-plus'></i>",
     // });
+    $('.guest-checkout').click(function(e){
+        e.preventDefault();
+        $('.col2-set').toggleClass('d-none');
+        $('#place_order').toggle();
+    });
     function modalshow(){
         $('#exampleModal').modal('show')
     }
