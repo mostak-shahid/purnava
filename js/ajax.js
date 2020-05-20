@@ -292,7 +292,26 @@ jQuery(document).ready(function($){
                 	$('#user_login').closest('.form-group').addClass('has-error');
                 	$('#user_login').closest('.form-group').append('<div class="login-error">'+data.error+'</div>');
                 } else {
-                	form.submit();
+                	// form.submit();
+                    $.ajax({
+                        type: "POST",
+                        dataType : "json",
+                        url : ajax_obj.ajax_url,
+                        data: {             
+                            action: "login_done",
+                            // form : form.serialize(), // serializes the form's elements.
+                            user_login: user_login,
+                            user_pass: user_pass,
+                            rememberme: rememberme,
+                        },
+                        success: function(data){
+                            console.log(data);
+                            if (data.loggedin == true){
+                                document.location.href = data.url;
+                            }
+                        }
+
+                    });
                 }
 			}
 	    });

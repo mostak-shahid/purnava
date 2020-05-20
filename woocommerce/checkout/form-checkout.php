@@ -29,12 +29,15 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 global $districts;
 $customer_id = get_current_user_id();
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-	if( isset( $_POST['address_nonce_form_field'] ) && wp_verify_nonce( $_POST['address_nonce_form_field'], 'address_nonce_form') ) {
+	// var_dump($_POST);
+	if( isset( $_POST['address_nonce_form_field'] ) && wp_verify_nonce( $_POST['address_nonce_form_field'], 'address_nonce_form') ) {	
 		$address = get_user_meta( $customer_id, 'mos_user_address', true ); 
-		$newindex = sizeof($address);
-		$index = ($_POST['id'] == 'new')?$newindex:$_POST['id'];
-		$address[$index] = array(
-			'id' => $index,
+		if(!@$address) $address = array();
+		if (@$address && $_POST['id'] == 'new') $newindex = sizeof($address);
+		elseif($_POST['id'] == 'new') $newindex = 0;
+		else  $newindex = $_POST['id'];
+		$address[$newindex] = array(
+			'id' => $newindex,
 			'type' => $_POST['type'],
 			'first_name' => $_POST['first_name'],
 			'last_name' => $_POST['last_name'],
@@ -116,23 +119,25 @@ if ($delete >-1 ){
 					$addresses = get_user_meta( $customer_id, 'mos_user_address', true );
 					// var_dump($addresses);
 					$n = 1;
-					foreach ($addresses as $key => $address) : ?>
-						<div class="col-lg-6">
+					if (@$addresses) :
+						foreach ($addresses as $key => $address) : ?>
+							<div class="col-lg-6">
 
-							<div class="address-unit old-unit d-flex <?php if ($address['type'] == 'default') echo 'active' ?>" data-fname="<?php echo $address['first_name'] ?>" data-lname="<?php echo $address['last_name'] ?>" data-phone="<?php echo $address['phone'] ?>" data-address="<?php echo $address['address'] ?>" data-city="<?php echo $districts[$address['district']] ?>" data-district="<?php echo $address['district'] ?>" data-post="<?php echo $address['post'] ?>">
-								<div class="wrap p15">
-									<div class="custom-control custom-radio">
-										<input type="radio" id="customRadioInline-<?php echo $n ?>" name="customRadioInline1" class="custom-control-input" <?php if ($address['type'] == 'default') echo 'checked' ?>>
-										<label class="custom-control-label" for="customRadioInline-<?php echo $n ?>"><?php echo $address["first_name"] ?> <?php echo $address["last_name"] ?></label>
+								<div class="address-unit old-unit d-flex <?php if ($address['type'] == 'default') echo 'active' ?>" data-fname="<?php echo $address['first_name'] ?>" data-lname="<?php echo $address['last_name'] ?>" data-phone="<?php echo $address['phone'] ?>" data-address="<?php echo $address['address'] ?>" data-city="<?php echo $districts[$address['district']] ?>" data-district="<?php echo $address['district'] ?>" data-post="<?php echo $address['post'] ?>">
+									<div class="wrap p15">
+										<div class="custom-control custom-radio">
+											<input type="radio" id="customRadioInline-<?php echo $n ?>" name="customRadioInline1" class="custom-control-input" <?php if ($address['type'] == 'default') echo 'checked' ?>>
+											<label class="custom-control-label" for="customRadioInline-<?php echo $n ?>"><?php echo $address["first_name"] ?> <?php echo $address["last_name"] ?></label>
+										</div>
+										<p class="living"><?php echo $address["address"] ?></p>
+										<p class="mobile">Mobile: <?php echo $address["phone"] ?></p>									
 									</div>
-									<p class="living"><?php echo $address["address"] ?></p>
-									<p class="mobile">Mobile: <?php echo $address["phone"] ?></p>									
 								</div>
+								<div class="address-action"><a href="javascript:void(0)" class="text-info edit-modal" data-id="<?php echo $key ?>">Edit</a><?php if ($address['type'] != 'default') : ?> | <a href="<?php echo home_url( '/checkout/' ); ?>?delete=<?php echo $key ?>" class="text-danger" data-id="1">Delete</a><?php endif; ?></div>
 							</div>
-							<div class="address-action"><a href="javascript:void(0)" class="text-info edit-modal" data-id="<?php echo $key ?>">Edit</a><?php if ($address['type'] != 'default') : ?> | <a href="<?php echo home_url( '/checkout/' ); ?>?delete=<?php echo $key ?>" class="text-danger" data-id="1">Delete</a><?php endif; ?></div>
-						</div>
-						<?php $n++; ?>
-					<?php endforeach; ?>
+							<?php $n++; ?>
+						<?php endforeach; ?>
+					<?php endif; ?>
 						<div class="col-lg-6">
 							<div class="address-unit add-new d-flex justify-content-center align-items-center add-address edit-modal" data-id="new">
 								<div class="wrap text-center">

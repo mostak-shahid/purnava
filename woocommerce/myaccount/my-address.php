@@ -19,12 +19,15 @@ global $districts;
 $customer_id = get_current_user_id();
 defined( 'ABSPATH' ) || exit;
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-	if( isset( $_POST['address_nonce_form_field'] ) && wp_verify_nonce( $_POST['address_nonce_form_field'], 'address_nonce_form') ) {
+	// var_dump($_POST);
+	if( isset( $_POST['address_nonce_form_field'] ) && wp_verify_nonce( $_POST['address_nonce_form_field'], 'address_nonce_form') ) {	
 		$address = get_user_meta( $customer_id, 'mos_user_address', true ); 
-		$newindex = sizeof($address);
-		$index = ($_POST['id'] == 'new')?$newindex:$_POST['id'];
-		$address[$index] = array(
-			'id' => $index,
+		if(!@$address) $address = array();
+		if (@$address && $_POST['id'] == 'new') $newindex = sizeof($address);
+		elseif($_POST['id'] == 'new') $newindex = 0;
+		else  $newindex = $_POST['id'];
+		$address[$newindex] = array(
+			'id' => $newindex,
 			'type' => $_POST['type'],
 			'first_name' => $_POST['first_name'],
 			'last_name' => $_POST['last_name'],
@@ -35,33 +38,36 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			'post' => $_POST['post'],			
 		);
 		update_user_meta( $customer_id, 'mos_user_address', $address );
-
-/*
-array(10) {
-  ["address_nonce_form_field"]=&gt;
-  string(10) "69a671cf8b"
-  ["_wp_http_referer"]=&gt;
-  string(34) "/ePurnava/my-account/edit-address/"
-  ["first_name"]=&gt;
-  string(3) "Md."
-  ["phone"]=&gt;
-  string(6) "Shahid"
-  ["phone"]=&gt;
-  string(11) "01710702212"
-  ["fax"]=&gt;
-  string(11) "01710702212"
-  ["address"]=&gt;
-  string(79) "House-63(1st floor), Road-4, Block-C, Banani Model Town, Dhaka 1213, Bangladesh"
-  ["district"]=&gt;
-  string(5) "Dhaka"
-  ["post"]=&gt;
-  string(4) "1213"
-  ["submit"]=&gt;
-  string(6) "update"
-}
-
-*/
 	}
+/*
+array(12) {
+  ["address_nonce_form_field"]=>
+  string(10) "c977f7b2b7"
+  ["_wp_http_referer"]=>
+  string(34) "/ePurnava/my-account/edit-address/"
+  ["first_name"]=>
+  string(6) "Mostak"
+  ["last_name"]=>
+  string(6) "Shahid"
+  ["phone"]=>
+  string(11) "01710702212"
+  ["fax"]=>
+  string(11) "01670058131"
+  ["address"]=>
+  string(46) "House-75(3rd Floor), Road-4(B), Niketon, Dhaka"
+  ["district"]=>
+  string(5) "BD-13"
+  ["post"]=>
+  string(4) "1213"
+  ["id"]=>
+  string(3) "new"
+  ["type"]=>
+  string(5) "other"
+  ["submit"]=>
+  string(6) "create"
+}
+*/
+
 }
 $setdefault = @$_GET['setdefault'];
 $delete = @$_GET['delete'];

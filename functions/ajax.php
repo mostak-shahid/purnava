@@ -109,6 +109,24 @@ function login_check_ajax_callback () {
     echo json_encode($data);
     exit;
 }
+// AJAX action callback 
+add_action( 'wp_ajax_login_done', 'login_done_ajax_callback' );
+add_action( 'wp_ajax_nopriv_login_done', 'login_done_ajax_callback' );
+// Ajax Callback 
+function login_done_ajax_callback () {
+    $info = array();
+    $info['user_login'] = $_POST['user_login'];
+    $info['user_password'] = $_POST['user_pass'];
+    $info['remember'] = $_POST['rememberme'];
+
+    $user_signon = wp_signon( $info, false ); 
+    if ( is_wp_error($user_signon) ){
+        echo json_encode(array('loggedin'=>false, 'message'=>__('Wrong username or password.')));
+    } else {
+        echo json_encode(array('url'=>home_url('/my-account/'),'loggedin'=>true, 'message'=>__('Login successful, redirecting...')));
+    }
+    exit;   
+}
 add_action( 'wp_ajax_load_posts', 'load_posts_ajax_callback' );
 add_action( 'wp_ajax_nopriv_load_posts', 'load_posts_ajax_callback' );
 // Ajax Callback 

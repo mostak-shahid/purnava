@@ -3,9 +3,9 @@ function add_slug_body_class( $classes ) {
     global $post;
     if ( isset( $post ) AND $post->post_type == 'page' ) {
         $classes[] = $post->post_type . '-' . $post->post_name;
-    } else {
+    }/* else {
         $classes[] = $post->post_type . '-archive';
-    }
+    }*/
     if (get_current_user_id()){
         $classes[] = 'logged-in-user';
     } else {
