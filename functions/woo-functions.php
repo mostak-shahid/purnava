@@ -443,3 +443,22 @@ function add_payment_method_column_content( $column ) {
        echo $order->payment_method_title;
    }
 }
+
+/**
+*  Add custom handling fee to an order 
+*/
+function pt_add_handling_fee() {
+    global $woocommerce;
+    if ( is_admin() && ! defined( 'DOING_AJAX' ) )
+        return;
+    if ($woocommerce->cart->subtotal>=300){
+        $fee = 0.00;
+    } else {
+        $fee = 30.00;
+    }
+    $title = 'Delivery Charge';
+    $woocommerce->cart->add_fee( $title, $fee, TRUE, 'standard' );
+}
+ 
+// Action -> Add custom handling fee to an order
+add_action( 'woocommerce_cart_calculate_fees', 'pt_add_handling_fee' );
