@@ -31,7 +31,7 @@ jQuery(document).ready(function($){
             setCookie('checkout-redirect','no',1);
             window.location.href = home + 'checkout';
         }
-        console.log(getCookie('checkout-redirect'));
+        // console.log(getCookie('checkout-redirect'));
     }
     function modalshow(){
         $('#exampleModal').modal('show')
@@ -344,6 +344,29 @@ jQuery(document).ready(function($){
     }
     $("#account_image").change(function(){
         readURL(this, '#account_image_preview');
+    });
+    $(window).load(function() {
+        var url = window.location.href;
+        var arr = url.split('/');
+        if(arr[arr.length - 2] == 'checkout'){
+            var ths = $('.address-unit.old-unit.active');
+
+            var fname = ths.data('fname');
+            var lname = ths.data('lname');
+            var phone = ths.data('phone');
+            var address = ths.data('address');
+            var city = ths.data('city');
+            var district = ths.data('district');
+            var post = ths.data('post');
+
+            $('#billing_first_name,#shipping_first_name').val(fname);
+            $('#billing_last_name,#shipping_last_name').val(lname);
+            $('#billing_address_1').val(address);
+            $('#billing_city').val(city);
+            $('#billing_state').val(district);
+            $('#billing_phone').val(phone);
+            $('#billing_postcode').val(post);
+        }
     });
     $('.address-unit.old-unit').click(function(){
         $(this).parent().siblings().find('.address-unit').removeClass('active');
