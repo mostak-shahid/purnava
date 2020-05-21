@@ -63,7 +63,7 @@ function mos_modal_func( $atts = array(), $content = '' ) {
 		'icon_name' => '',
 		'enable-header' => '',
 		'header-title' => '',
-		'id' => 'exampleModal',
+		'id' => 'exampleModal-'.rand(0,99999),
 		'extraclass' => '',
 		'css' => '',
 	), $atts, 'mos-modal' );
@@ -73,7 +73,7 @@ function mos_modal_func( $atts = array(), $content = '' ) {
 		$html .= '<button type="button" class="'.$atts['btn-class'].'" data-toggle="modal" data-target="#'.$atts['id'].'">';
 		if ($atts['icon_name']) $html .= '<i class="'.$atts['icon_name'].'"></i>';
 			$html .=$atts['btn-text'].'</button>';
-		$html .= '<div class="modal fade '.$atts['extraclass'].'" id="'.$atts['id'].'" tabindex="-1" role="dialog" aria-labelledby="'.$atts['id'].'Label" aria-hidden="true">';
+		$html .= '<div class="modal fade modal-with-youtube '.$atts['extraclass'].'" id="'.$atts['id'].'" tabindex="-1" role="dialog" aria-labelledby="'.$atts['id'].'Label" aria-hidden="true">';
 			$html .= '<div class="modal-dialog modal-dialog-centered modal-800" role="document">';
 				$html .= '<div class="modal-content">';
 				
@@ -229,7 +229,7 @@ function mos_embeded_carousel_shortcode($atts){
 
 	}
 	$list .= '
-	<div id="embededModal" class="modal fade" tabindex="-1">
+	<div id="embededModal" class="modal fade modal-with-youtube" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-800">
             <div class="modal-content">
                 

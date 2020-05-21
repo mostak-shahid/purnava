@@ -48,6 +48,9 @@ jQuery(document).ready(function($){
         $('#embededModal').modal('show');
         // alert(href);
     });
+    $('.modal-with-youtube').on('hidden.bs.modal', function () {
+        $(".modal-with-youtube iframe").attr("src", $(".modal-with-youtube iframe").attr("src"));
+    })
     $('.auth-form-wrapper .input-group-text').click(function(){
         var input = $(this).closest('.form-group').find('input');
         var intype = input.attr('type'); 
