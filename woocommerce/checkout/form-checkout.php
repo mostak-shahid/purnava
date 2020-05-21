@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		else  $newindex = $_POST['id'];
 		$address[$newindex] = array(
 			'id' => $newindex,
-			'type' => $_POST['type'],
+			'type' => 'default',
 			'first_name' => $_POST['first_name'],
 			'last_name' => $_POST['last_name'],
 			'phone' => $_POST['phone'],
