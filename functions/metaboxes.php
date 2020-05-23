@@ -372,5 +372,47 @@ function purnava_metaboxes() {
         // ),
         'preview_size' => 'large', // Image size to use when previewing in the admin.
     ));
+
+    $social_info = new_cmb2_box(array(
+        'id' => $prefix . 'social_info',
+        'title' => __('Social Info', 'cmb2'),
+        'object_types' => array('post','event'),
+    ));
+    $social_info->add_field( array(
+        'name'    => 'Feature Image',
+        'desc'    => 'Upload an image or enter an URL. Size should be 600x315px',
+        'id'      => $prefix . 'social_feature_image',
+        'type'    => 'file',
+        // Optional:
+        'options' => array(
+            'url' => true, // Hide the text input for the url
+        ),
+        'text'    => array(
+            'add_upload_file_text' => 'Add Image' // Change upload button text. Default: "Add or Upload File"
+        ),
+        // query_args are passed to wp.media's library query.
+        'query_args' => array(
+            // 'type' => 'application/pdf', // Make library only display PDFs.
+            // Or only allow gif, jpg, or png images
+            'type' => array(
+             'image/gif',
+             'image/jpeg',
+             'image/png',
+            ),
+        ),
+        // 'preview_size' => 'large', // Image size to use when previewing in the admin.
+    ));
+    $social_info->add_field( array(
+        'name' => __( 'Title', 'cmb2' ),
+        'desc' => 'You can leave it blank if you like to use the same title of the post.',
+        'id'   => $prefix . 'social_title',
+        'type' => 'text',
+    )); 
+    $social_info->add_field( array(
+        'name' => 'Description',
+        'desc' => 'You can leave it blank if you like to use the default excerpt of the post.',
+        'id'   => $prefix . 'social_description',
+        'type' => 'textarea'
+    ));
 }
 add_action('cmb2_admin_init', 'purnava_metaboxes');

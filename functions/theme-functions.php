@@ -41,7 +41,31 @@ function mos_get_terms ($taxonomy = 'category') {
     }
     return $output;
 }
+function mos_water_mark($image_id, $watermark_id=0, $width='600', $height='315'){
+    $image_url = wp_get_attachment_url($image_id);
 
+    $image = get_attached_file($image_id);
+    $path_parts = pathinfo($image);
+    $folder = $path_parts['dirname'];
+    $filename = $path_parts['filename'];
+    $extension = $path_parts['extension'];
+
+    $watermark = get_template_directory().'/images/watermark-purnava.png';
+    if ($watermark_id){
+        $watermark = get_attached_file($watermark_id);
+    }
+    $data = wp_get_attachment_image_src($image_id, 'full');
+
+    $outputFile = $folder.'/'.$filename.'-'.$width.'x'.$height.'.'.$extension;
+    if(!file_exists($outputFile)){
+        $imgObj = new imageLib($image);
+        if ($data[1]>$width AND $data[2]>$height) $imgObj -> resizeImage($width, $height, 'crop');
+        $imgObj -> addWatermark($watermark, 'br');
+        $imgObj -> saveImage($outputFile, 100);
+    }
+    $output = pathinfo($image_url)['dirname'].'/'.$filename.'-'.$width.'x'.$height.'.'.$extension;
+    return $output;
+}
 /*Variables*/
 $template_parts = array(
     'Enabled'  => array(

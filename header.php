@@ -20,38 +20,33 @@ if ( $current_user->ID ) {
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="keywords" content="">
-	<meta name="description" content="">
+    <meta name="keywords" content="<?php echo get_post_meta( get_the_ID(),'_yoast_wpseo_focuskw', true ) ?>">
+    <meta name="description" content="<?php echo get_post_meta( get_the_ID(),'_yoast_wpseo_metadesc', true ) ?>">
 	<meta name="author" content="Md. Mostak Shahid">
 	<?php if(is_single()) :
 		$post = get_the_ID();
 		global $wp; 
 		$current_url = home_url( add_query_arg( array(), $wp->request ) );
+		$social_feature_image_id = get_post_meta( $post, '_purnava_social_feature_image_id', true );
+		if ($social_feature_image_id){
+			$og_url = aq_resize(wp_get_attachment_url($social_feature_image_id),600,315,true);
+		} else if(has_post_thumbnail($post)){
+			$attachment_id = get_post_thumbnail_id($post);
+			$og_url = mos_water_mark($attachment_id);			
+		} else {
+			$og_url = '';
+		}
+		$social_title = get_post_meta( $post, '_purnava_social_title', true );
+		$og_title = ($social_title)?$social_title:get_the_title( $post );
+		$social_description = get_post_meta( $post, '_purnava_social_description', true );
+		$og_description = ($social_description)?$social_description:get_the_excerpt($post);
 		?>
 		<meta property="og:site_name" content="<?php echo get_bloginfo('name'); ?>">
 		<meta property="og:url" content="<?php echo $current_url ?>" />
 		<meta property="og:type" content="article" />
-		<meta property="og:title" content="SEO Title" />
-		<meta property="og:description" content="SEO Description" />
+		<meta property="og:title" content="<?php echo $og_title ?>" />
+		<meta property="og:description" content="<?php echo $og_description ?>" />
 		<?php if(has_post_thumbnail($post)):
-			$attachment_id = get_post_thumbnail_id($post);
-			$data = wp_get_attachment_image_src($attachment_id, 'full');
-			$image = get_attached_file($attachment_id);
-			$path_parts = pathinfo($image);
-			$filename = $path_parts['filename'];
-			$extension = $path_parts['extension'];
-
-			$watermark = get_template_directory().'/images/watermark-purnava.png';
-
-			$outputDir = wp_get_upload_dir();
-			$outputPath = $outputDir['path'];
-
-			$imgObj = new imageLib($image);
-			if ($data[1]>600 AND $data[2]>315) $imgObj -> resizeImage(600, 315, 'crop');
-			$imgObj -> addWatermark($watermark, 'br');
-			$imgObj -> saveImage($outputPath.'/'.$filename.'-600x315.'.$extension, 100);
-
-			$og_url = home_url('/wp-content/uploads').$outputDir["subdir"].'/'.$filename.'-600x315.'.$extension;
 		?>
 			<meta property="og:image" content="<?php echo $og_url ?>" />
 			<meta property="og:image:width" content="600" />
@@ -62,11 +57,11 @@ if ( $current_user->ID ) {
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:site" content="@purnavalimited" />
 		<meta name="twitter:creator" content="@purnavalimited" />
-		<meta name="twitter:title" content="SEO Title">
+		<meta name="twitter:title" content="<?php echo $og_title ?>">
 		<meta property="twitter:url" content="<?php echo $current_url ?>" />
-		<meta name="twitter:description" content="SEO Description">
+		<meta name="twitter:description" content="<?php echo $og_description ?>">
 		<meta name="twitter:image" content="<?php echo $og_url ?>">
-		<meta name="twitter:image:alt" content="SEO Title">
+		<meta name="twitter:image:alt" content="<?php echo $og_title ?>">
 	<?php endif; ?>
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5shiv.js"></script>
