@@ -65,7 +65,7 @@ if ( $current_user->ID ) {
 		<meta name="twitter:title" content="SEO Title">
 		<meta property="twitter:url" content="<?php echo $current_url ?>" />
 		<meta name="twitter:description" content="SEO Description">
-		<!-- <meta name="twitter:image" content="https://imaginary.barta24.com/watermarkimage?image=https://barta24.com/watermark.png&path=/uploads/news/2020/May/23/1590209659780.jpg&width=600&height=315&top=271"> -->
+		<meta name="twitter:image" content="<?php echo $og_url ?>">
 		<meta name="twitter:image:alt" content="SEO Title">
 	<?php endif; ?>
 <!--[if lt IE 9]>
