@@ -12,6 +12,7 @@ if ( $current_user->ID ) {
 		exit;
 	}
 }
+
 ?>
 <?php global $purnava_options; ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -77,7 +78,11 @@ if ( $current_user->ID ) {
 						<div class="col-6 col-lg-3 order-lg-last text-right icon-wrapper">
 							<ul class="list-inline mb-0">
 								<?php
-								$wishlist = YITH_WCWL()->count_products();
+								$wishlist = 0;
+								include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+								if ( is_plugin_active( 'yith-woocommerce-wishlist/init.php' ) ) {
+									$wishlist = YITH_WCWL()->count_products();
+								}
 								global $woocommerce;
     							$items = $woocommerce->cart->get_cart();
 								?>
