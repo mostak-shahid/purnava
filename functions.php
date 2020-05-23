@@ -36,6 +36,7 @@ require_once('functions/metaboxes.php');
 require_once('inc/TGM-Plugin-Activation-develop/plugin-management.php');
 
 require_once('functions/aq_resizer.php');
+require_once('functions/php_image_magician.php');
 require_once('functions/Mobile_Detect.php');
 require_once('functions/bs4navwalker.php');
 require_once('functions/breadcrumb.php');

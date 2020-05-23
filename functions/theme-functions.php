@@ -41,6 +41,7 @@ function mos_get_terms ($taxonomy = 'category') {
     }
     return $output;
 }
+
 /*Variables*/
 $template_parts = array(
     'Enabled'  => array(

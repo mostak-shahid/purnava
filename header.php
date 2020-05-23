@@ -23,8 +23,8 @@ if ( $current_user->ID ) {
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 	<meta name="author" content="Md. Mostak Shahid">
-	<?php if(is_single()) : ?>
-		<?php 
+	<?php if(is_single()) :
+		$post = get_the_ID();
 		global $wp; 
 		$current_url = home_url( add_query_arg( array(), $wp->request ) );
 		?>
@@ -33,9 +33,30 @@ if ( $current_user->ID ) {
 		<meta property="og:type" content="article" />
 		<meta property="og:title" content="SEO Title" />
 		<meta property="og:description" content="SEO Description" />
-		<meta property="og:image" content="https://imaginary.barta24.com/watermarkimage?image=https://barta24.com/watermark.png&path=/uploads/news/2020/May/23/1590209659780.jpg&width=600&height=315&top=271" />
-		<meta property="og:image:width" content="600" />
-		<meta property="og:image:height" content="315" />
+		<?php if(has_post_thumbnail($post)):
+			$attachment_id = get_post_thumbnail_id($post);
+			$data = wp_get_attachment_image_src($attachment_id, 'full');
+			$image = get_attached_file($attachment_id);
+			$path_parts = pathinfo($image);
+			$filename = $path_parts['filename'];
+			$extension = $path_parts['extension'];
+
+			$watermark = get_template_directory().'/images/watermark-purnava.png';
+
+			$outputDir = wp_get_upload_dir();
+			$outputPath = $outputDir['path'];
+
+			$imgObj = new imageLib($image);
+			if ($data[1]>600 AND $data[2]>315) $imgObj -> resizeImage(600, 315, 'crop');
+			$imgObj -> addWatermark($watermark, 'br');
+			$imgObj -> saveImage($outputPath.'/'.$filename.'-600x315.'.$extension, 100);
+
+			$og_url = home_url('/wp-content/uploads').$outputDir["subdir"].'/'.$filename.'-600x315.'.$extension;
+		?>
+			<meta property="og:image" content="<?php echo $og_url ?>" />
+			<meta property="og:image:width" content="600" />
+			<meta property="og:image:height" content="315" />
+		<?php endif; ?>
 
 
 		<meta name="twitter:card" content="summary_large_image">
@@ -44,7 +65,7 @@ if ( $current_user->ID ) {
 		<meta name="twitter:title" content="SEO Title">
 		<meta property="twitter:url" content="<?php echo $current_url ?>" />
 		<meta name="twitter:description" content="SEO Description">
-		<meta name="twitter:image" content="https://imaginary.barta24.com/watermarkimage?image=https://barta24.com/watermark.png&path=/uploads/news/2020/May/23/1590209659780.jpg&width=600&height=315&top=271">
+		<!-- <meta name="twitter:image" content="https://imaginary.barta24.com/watermarkimage?image=https://barta24.com/watermark.png&path=/uploads/news/2020/May/23/1590209659780.jpg&width=600&height=315&top=271"> -->
 		<meta name="twitter:image:alt" content="SEO Title">
 	<?php endif; ?>
 <!--[if lt IE 9]>
