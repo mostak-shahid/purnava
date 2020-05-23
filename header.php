@@ -22,6 +22,30 @@ if ( $current_user->ID ) {
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 	<meta name="author" content="Md. Mostak Shahid">
+	<?php if(is_single()) : ?>
+		<?php 
+		global $wp; 
+		$current_url = home_url( add_query_arg( array(), $wp->request ) );
+		?>
+		<meta property="og:site_name" content="<?php echo get_bloginfo('name'); ?>">
+		<meta property="og:url" content="<?php echo $current_url ?>" />
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content="SEO Title" />
+		<meta property="og:description" content="SEO Description" />
+		<meta property="og:image" content="https://imaginary.barta24.com/watermarkimage?image=https://barta24.com/watermark.png&path=/uploads/news/2020/May/23/1590209659780.jpg&width=600&height=315&top=271" />
+		<meta property="og:image:width" content="600" />
+		<meta property="og:image:height" content="315" />
+
+
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@purnavalimited" />
+		<meta name="twitter:creator" content="@purnavalimited" />
+		<meta name="twitter:title" content="SEO Title">
+		<meta property="twitter:url" content="<?php echo $current_url ?>" />
+		<meta name="twitter:description" content="SEO Description">
+		<meta name="twitter:image" content="https://imaginary.barta24.com/watermarkimage?image=https://barta24.com/watermark.png&path=/uploads/news/2020/May/23/1590209659780.jpg&width=600&height=315&top=271">
+		<meta name="twitter:image:alt" content="SEO Title">
+	<?php endif; ?>
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5shiv.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/respond.min.js"></script>
