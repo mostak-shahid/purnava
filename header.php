@@ -36,32 +36,21 @@ if ( $current_user->ID ) {
 		} else {
 			$og_url = '';
 		}
-		$social_title = get_post_meta( $post, '_purnava_social_title', true );
-		$og_title = ($social_title)?$social_title:get_the_title( $post );
-		$social_description = get_post_meta( $post, '_purnava_social_description', true );
-		$og_description = ($social_description)?$social_description:get_the_excerpt($post);
 		?>
-		<meta property="og:site_name" content="<?php echo get_bloginfo('name'); ?>">
-		<meta property="og:url" content="<?php echo $current_url ?>" />
-		<meta property="og:type" content="article" />
-		<meta property="og:title" content="<?php echo $og_title ?>" />
-		<meta property="og:description" content="<?php echo $og_description ?>" />
-		<?php if(has_post_thumbnail($post)):
-		?>
+			<meta property="og:site_name" content="<?php echo get_bloginfo('name'); ?>">
+			<meta property="og:url" content="<?php echo $current_url ?>" />
+			<meta property="og:type" content="article" />
+
 			<meta property="og:image" content="<?php echo $og_url ?>" />
 			<meta property="og:image:width" content="600" />
 			<meta property="og:image:height" content="315" />
-		<?php endif; ?>
 
-
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:site" content="@purnavalimited" />
-		<meta name="twitter:creator" content="@purnavalimited" />
-		<meta name="twitter:title" content="<?php echo $og_title ?>">
-		<meta property="twitter:url" content="<?php echo $current_url ?>" />
-		<meta name="twitter:description" content="<?php echo $og_description ?>">
-		<meta name="twitter:image" content="<?php echo $og_url ?>">
-		<meta name="twitter:image:alt" content="<?php echo $og_title ?>">
+			<meta name="twitter:card" content="summary_large_image">
+			<meta name="twitter:site" content="@purnavalimited" />
+			<meta name="twitter:creator" content="@purnavalimited" />
+			<meta property="twitter:url" content="<?php echo $current_url ?>" />
+			<meta name="twitter:image" content="<?php echo $og_url ?>">
+			<meta name="twitter:image:alt" content="<?php echo get_the_title() ?>">
 	<?php endif; ?>
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5shiv.js"></script>

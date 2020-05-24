@@ -402,17 +402,5 @@ function purnava_metaboxes() {
         ),
         // 'preview_size' => 'large', // Image size to use when previewing in the admin.
     ));
-    $social_info->add_field( array(
-        'name' => __( 'Title', 'cmb2' ),
-        'desc' => 'You can leave it blank if you like to use the same title of the post.',
-        'id'   => $prefix . 'social_title',
-        'type' => 'text',
-    )); 
-    $social_info->add_field( array(
-        'name' => 'Description',
-        'desc' => 'You can leave it blank if you like to use the default excerpt of the post.',
-        'id'   => $prefix . 'social_description',
-        'type' => 'textarea'
-    ));
 }
 add_action('cmb2_admin_init', 'purnava_metaboxes');
