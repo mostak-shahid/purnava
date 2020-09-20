@@ -10,7 +10,7 @@ jQuery(document).ready(function($){
     $('.guest-checkout').click(function(e){
         e.preventDefault();
         $('.col2-set').toggleClass('d-none');
-        $('#place_order').toggle();
+        // $('#place_order').toggle();
     });
     $('.auth-link').click(function(e){
         e.preventDefault();   

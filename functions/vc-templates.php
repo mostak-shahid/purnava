@@ -53,6 +53,89 @@ function your_name_integrateWithVC() {
 		)
 	));
 }*/
+
+function mos_prodects_func( $atts = array(), $content = '' ) {
+	$html = '';
+	$atts = shortcode_atts( array(
+		'products' => '-1',
+		'loadmore' => 'no'
+	), $atts, 'mos-products' );	
+	// $atts['grid'], $atts['loadmore']
+
+	// The Query
+	$args = array(
+		'post_type' => 'product',
+		'order'   => 'DESC',
+		'posts_per_page' => $atts['products'],
+	);
+	$query = new WP_Query( $args );
+	 
+	// The Loop
+	if ( $query->have_posts() ) {
+		$html .= '<div class="products-container">';
+			$html .= '<div class="row product-row">';
+			    while ( $query->have_posts() ) {
+			        $query->the_post();
+			        $html .= '<div class="col-lg-2 col-md-4 col-sm-6 mb30">';
+			        	$html .= '<div class="product">';
+
+				        	$html .= '<a href="'.get_the_permalink().'" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">';
+				        	if (has_post_thumbnail()) :
+				        		$html .= '<img width="310" height="310" src="'.aq_resize(get_the_post_thumbnail_url(),310,310,true).'" class="img-fluid product-img" alt="">';
+				        	endif;
+				        	$html .= '</a>';
+				        	$html .= '<div class="loop-title-wrapper position-relative"><div class="custom-button-wrapper smooth"><a rel="nofollow" href="?add-to-cart='.get_the_ID().'" data-quantity="1" data-product_id="'.get_the_ID().'" data-product_sku="" class="btn btn-primary text-white cart-button">Add to Cart</a><a rel="nofollow" href="?add_to_wishlist='.get_the_ID().'" data-quantity="1" data-product_id="'.get_the_ID().'" data-product_sku="" class="btn btn-outline-primary wishlist-button">Add to Wishlist</a></div><!--custom-button-wrapper--><a href="'.get_the_permalink().'" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">'.get_the_title().'</h2></a><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Tk. </span>120.00</span></span></div>';
+			        	$html .= '</div>';
+			        $html .= '</div>';
+			    }
+			$html .= '</div>';
+			if ($atts['loadmore'] == 'yes'){
+				$html .= '<div class="row">';
+			    	$html .= '<div class="col-lg-4 offset-lg-4">';
+			    	$html .= '<button class="btn btn-block rounded-0 btn-primary load-more-product" data-offset="'.$atts['products'].'" data-load="'.$atts['products'].'">Load More</button>';
+			    	$html .= '<input class="offset" type="hidden" value="'.$atts['products'].'">';
+			    	$html .= '</div>';
+				$html .= '</div>';
+			}
+		$html .= '</div>';
+	}
+	wp_reset_postdata();
+	return $html;
+}
+add_shortcode( 'mos-products', 'mos_prodects_func' );
+add_action( 'vc_before_init', 'mos_productsWithVC' );
+function mos_productsWithVC() {
+	vc_map( array(
+		"name" => __( "Mos Products", "my-text-domain" ),
+		"base" => 'mos-products',
+		"class" => "",
+		"category" => __( "Mos Elements", "my-text-domain"),
+		'icon'     => get_template_directory_uri() . '/images/mos-vc.png',
+				
+		"params" => array(
+			array(
+				"type" => "textfield",
+				"holder" => "div",
+				"class" => "",
+				"admin_label" => false,
+				"heading" => __( "Number of Products", "my-text-domain" ),
+				"param_name" => "products",
+			),
+			array(
+				"type" => "dropdown",
+				"admin_label" => false,
+				"heading" => __( "Load More", "my-text-domain" ),
+				"param_name" => "loadmore",
+				"value" => array(
+					'No' => 'no',
+					'Yes' => 'yes',
+				),   
+				// "std"			=> 'embed-responsive-16by9',
+			),
+		)
+	));
+}
+
 function mos_modal_func( $atts = array(), $content = '' ) {
 	$html = '';
 	$atts = shortcode_atts( array(

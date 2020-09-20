@@ -263,3 +263,44 @@ function check_password_callback(){
 add_action( 'wp_ajax_check_password','check_password_callback' );
 add_action( 'wp_ajax_nopriv_check_password','check_password_callback' );
 
+function load_more_product_callback(){
+    $data = array();
+    $data['offset'] = $_POST['offset'];
+    $data['load'] = $_POST['load'];
+    $html = '';
+
+    $args = array(
+        'post_type' => 'product',
+        'order'   => 'DESC',
+        'posts_per_page' => $_POST['load'],
+        'offset' => $_POST['offset']
+    );
+    $query = new WP_Query( $args );
+    if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            $html .= '<div class="col-lg-4 mb30">';
+                $html .= '<div class="product">';
+
+                    $html .= '<a href="'.get_the_permalink().'" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">';
+                    if (has_post_thumbnail()) :
+                        $html .= '<img width="310" height="310" src="'.aq_resize(get_the_post_thumbnail_url(),310,310,true).'" class="img-fluid product-img" alt="">';
+                    endif;
+                    $html .= '</a>';
+                    $html .= '<div class="loop-title-wrapper position-relative"><div class="custom-button-wrapper smooth"><a rel="nofollow" href="?add-to-cart='.get_the_ID().'" data-quantity="1" data-product_id="'.get_the_ID().'" data-product_sku="" class="btn btn-primary text-white cart-button">Add to Cart</a><a rel="nofollow" href="?add_to_wishlist='.get_the_ID().'" data-quantity="1" data-product_id="'.get_the_ID().'" data-product_sku="" class="btn btn-outline-primary wishlist-button">Add to Wishlist</a></div><!--custom-button-wrapper--><a href="'.get_the_permalink().'" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">'.get_the_title().'</h2></a><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Tk. </span>120.00</span></span></div>';
+                $html .= '</div>';
+            $html .= '</div>';            
+        }
+    }
+    if ($html){
+        $data['html'] = $html;
+        $data['offset'] = $_POST['offset'] + $_POST['load'];
+    }
+
+    header("Content-type: text/x-json");
+    echo json_encode($data);
+    die();
+}
+add_action( 'wp_ajax_load_more_product','load_more_product_callback' );
+add_action( 'wp_ajax_nopriv_load_more_product','load_more_product_callback' );
+

@@ -462,3 +462,50 @@ function pt_add_handling_fee() {
  
 // Action -> Add custom handling fee to an order
 add_action( 'woocommerce_cart_calculate_fees', 'pt_add_handling_fee' );
+
+
+/* WooCommerce: The Code Below Removes Checkout Fields */
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+function custom_override_checkout_fields( $fields ) {
+    $fields['billing_first_name']['label'] = 'Full name';
+    // unset($fields['billing']['billing_first_name']);
+    unset($fields['billing']['billing_last_name']);
+    unset($fields['billing']['billing_company']);
+    // unset($fields['billing']['billing_address_1']);
+    // unset($fields['billing']['billing_address_2']);
+    unset($fields['billing']['billing_city']);
+    // unset($fields['billing']['billing_postcode']);
+    unset($fields['billing']['billing_country']);
+    // unset($fields['billing']['billing_state']);
+    // unset($fields['billing']['billing_phone']);
+    // unset($fields['order']['order_comments']);
+    // unset($fields['billing']['billing_email']);
+    // unset($fields['account']['account_username']);
+    // unset($fields['account']['account_password']);
+    // unset($fields['account']['account_password-2']);
+    return $fields;
+}
+
+add_action('woocommerce_checkout_order_processed', 'action_checkout_order_processed', 10, 1);
+function action_checkout_order_processed( $order_id ) {
+    // get an instance of the order object
+    // $order = wc_get_order( $order_id );
+    $order = new WC_Order($order_id);
+    $billing_phone = $order->billing_phone;
+
+    $user = "purnava";
+    $pass = "purnava@123";
+    $sid = "ePurnava"; 
+    $url="http://sms.sslwireless.com/pushapi/dynamic/server.php";
+    $param="user=$user&pass=$pass&sms[0][0]= 880XXXXXXXXXX &sms[0][1]=".urlencode("Test SMS 1")."&sms[0][2]=123456789&sms[1][0]= 8801670058131 &sms[1][1]=".urlencode("Your submitted order (ID#100006552) is now in Pending status. Thank You. @PURNAVA")."&sms[1][2]=123456790&sid=$sid";
+    $crl = curl_init();
+    curl_setopt($crl,CURLOPT_SSL_VERIFYPEER,FALSE);
+    curl_setopt($crl,CURLOPT_SSL_VERIFYHOST,2);
+    curl_setopt($crl,CURLOPT_URL,$url);
+    curl_setopt($crl,CURLOPT_HEADER,0);
+    curl_setopt($crl,CURLOPT_RETURNTRANSFER,1);
+    curl_setopt($crl,CURLOPT_POST,1);
+    curl_setopt($crl,CURLOPT_POSTFIELDS,$param);
+    $response = curl_exec($crl);
+    curl_close($crl);
+}

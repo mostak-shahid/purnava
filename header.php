@@ -113,7 +113,7 @@ if ( $current_user->ID ) {
 						// 'container_class' => 'collapse navbar-collapse',
 						'menu_id'         => false,
 						'menu_class'      => 'header-menu',
-						'depth'           => 1,
+						'depth'           => 2,
 						'fallback_cb'     => 'bs4navwalker::fallback',
 						//'walker'          => new bs4navwalker()
 						]);

@@ -260,6 +260,35 @@ jQuery(document).ready(function($){
         }
     });	
 
+    $(".load-more-product").click(function(){
+        var ths = $(this);
+        ths.prop('disabled',true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
+        // var offset = $(this).data('offset');
+        var offset = $('.offset').val();
+        var load = $(this).data('load');
+        // console.log(offset);
+        // console.log(load);
+        $.ajax({
+            type: "POST",
+            dataType : "json",
+            url : ajax_obj.ajax_url,
+            data: {             
+                action: "load_more_product",
+                // form : form.serialize(), // serializes the form's elements.
+                offset: offset,
+                load: load,
+            },
+            success: function(data) {
+                console.log(data); // show response from the php script.
+                ths.closest('.products-container').find('.product-row').append(data.html);
+                ths.prop('disabled',false).html('Load More');                
+                $newOffset = parseInt(offset) + parseInt(load);
+                ths.attr('data-offset', data.offset);
+                ths.siblings('.offset').val(data.offset);
+            }
+        });
+    });
+
     $("#wp-submit").click(function(){
 	    // e.preventDefault(); // avoid to execute the actual submit of the form.
         var user_login = $('#user_login').val();
