@@ -154,7 +154,7 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 .woocommerce ul.products li.product .price ins, .products-container .product .price ins{text-decoration: none;}
 .woocommerce ul.products li.product .custom-button-wrapper, .products-container .product .custom-button-wrapper {position: absolute;width: 100%;background-color: #ffffff;left: 0;top: -50px;}
 .woocommerce ul.products li.product:hover .custom-button-wrapper, .products-container .product:hover .custom-button-wrapper{top: 0}
-.woocommerce ul.products li.product .custom-button-wrapper a.btn, .products-container .product .custom-button-wrapper a.btn{border-radius: 0;border-color: #009BDF;padding-top: 10px;padding-bottom: 10px;width: 50%;}
+.woocommerce ul.products li.product .custom-button-wrapper a.btn, .products-container .product .custom-button-wrapper a.btn{border-radius: 0;border-color: #009BDF;padding-top: 10px;padding-bottom: 10px;width: 49%;}
 
 .woocommerce .related.products  ul.products li.product .custom-button-wrapper a.btn{font-size: 12px; line-height: 24px;}
 .woocommerce ul.products li.product .custom-button-wrapper a.btn-primary, .products-container .product .custom-button-wrapper a.btn-primary{background-color: #009BDF;color: #ffffff}

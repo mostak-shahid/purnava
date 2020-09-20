@@ -509,3 +509,15 @@ function action_checkout_order_processed( $order_id ) {
     $response = curl_exec($crl);
     curl_close($crl);
 }
+
+add_action('woocommerce_checkout_order_processed', 'action_checkout_admin_mailing', 11, 1);
+function action_checkout_admin_mailing($order_id){
+    $order = new WC_Order($order_id);
+    // $to = 'mostak.apu@gmail.com';
+    $to = 'sales@purnava.com';
+    $subject = 'New order has been placed.';
+    $body = '#'.$order_id .' has been placed.';
+    $headers = array('Content-Type: text/html; charset=UTF-8');
+     
+    wp_mail( $to, $subject, $body, $headers );
+}
