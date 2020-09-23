@@ -279,7 +279,7 @@ function load_more_product_callback(){
     if ( $query->have_posts() ) {
         while ( $query->have_posts() ) {
             $query->the_post();
-            $html .= '<div class="col-lg-4 mb30">';
+            $html .= '<div class="col-lg-2 col-md-4 col-sm-6 mb30">';
                 $html .= '<div class="product">';
 
                     $html .= '<a href="'.get_the_permalink().'" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">';
@@ -287,7 +287,7 @@ function load_more_product_callback(){
                         $html .= '<img width="310" height="310" src="'.aq_resize(get_the_post_thumbnail_url(),310,310,true).'" class="img-fluid product-img" alt="">';
                     endif;
                     $html .= '</a>';
-                    $html .= '<div class="loop-title-wrapper position-relative"><div class="custom-button-wrapper smooth"><a rel="nofollow" href="?add-to-cart='.get_the_ID().'" data-quantity="1" data-product_id="'.get_the_ID().'" data-product_sku="" class="btn btn-primary text-white cart-button">Add to Cart</a><a rel="nofollow" href="?add_to_wishlist='.get_the_ID().'" data-quantity="1" data-product_id="'.get_the_ID().'" data-product_sku="" class="btn btn-outline-primary wishlist-button">Add to Wishlist</a></div><!--custom-button-wrapper--><a href="'.get_the_permalink().'" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">'.get_the_title().'</h2></a><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Tk. </span>120.00</span></span></div>';
+                    $html .= '<div class="loop-title-wrapper position-relative"><div class="custom-button-wrapper smooth"><div class="row no-gutters"><div class="col-6"><a rel="nofollow" href="?add-to-cart='.get_the_ID().'" data-quantity="1" data-product_id="'.get_the_ID().'" data-product_sku="" class="btn btn-primary text-white cart-button w-100"><i class="fa fa-shopping-cart"></i></a></div><div class="col-6"><a rel="nofollow" href="?add_to_wishlist='.get_the_ID().'" data-quantity="1" data-product_id="'.get_the_ID().'" data-product_sku="" class="btn btn-outline-primary wishlist-button w-100"><i class="fa fa-heart"></i></a></div></div></div><!--custom-button-wrapper--><a href="'.get_the_permalink().'" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><h2 class="woocommerce-loop-product__title">'.get_the_title().'</h2></a><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">Tk. </span>120.00</span></span></div>';
                 $html .= '</div>';
             $html .= '</div>';            
         }
