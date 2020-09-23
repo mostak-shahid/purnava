@@ -30,6 +30,17 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 .post-loader{position: absolute;top: 0;left: 0;right: 0;height: 100%;background-color: rgba(0,0,0,.5);color: #ffffff;display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; align-items: center; justify-content: center; }
 .event-posts + .post-loader{left: 15px;right: 15px;}
 .event-unit img{width: 100%;}
+.btn-theme,.btn-theme-outline{
+	border-color: #009BDF;
+}
+.btn-theme,.btn-theme-outline:hover{
+	background-color: #009BDF;
+	color: #ffffff;
+}
+.btn-theme:hover{
+	color: #009BDF;
+	background-color: #ffffff;	
+}
 /*Visual Composer*/
 .vc_col-has-fill>.vc_column-inner, .vc_row-has-fill+.vc_row-full-width+.vc_row>.vc_column_container>.vc_column-inner, .vc_row-has-fill+.vc_row>.vc_column_container>.vc_column-inner, .vc_row-has-fill>.vc_column_container>.vc_column-inner{padding-top: 0!important;}
 .vc_btn3-container{margin-bottom: 0!important;}
